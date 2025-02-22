@@ -57,3 +57,7 @@ data/raw/sample_network_traffic.csv
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Config
+config.py
+config.py
