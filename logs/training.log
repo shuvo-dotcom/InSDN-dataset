@@ -1,0 +1,216 @@
+2025-03-29 18:43:39,650 - INFO - Using device: cuda
+2025-03-29 18:43:39,653 - INFO - Hyperparameters:
+2025-03-29 18:43:39,653 - INFO - Batch size: 256
+2025-03-29 18:43:39,653 - INFO - Epochs: 50
+2025-03-29 18:43:39,653 - INFO - Learning rate (G): 0.0001
+2025-03-29 18:43:39,653 - INFO - Learning rate (D): 0.0001
+2025-03-29 18:43:39,653 - INFO - Input dimension: 100
+2025-03-29 18:43:39,653 - INFO - Gradient clipping: 0.01
+2025-03-29 18:43:39,653 - INFO - Critic updates per G update: 5
+2025-03-29 18:43:39,657 - INFO - Loading dataset from C:\Users\navee\OneDrive\Desktop\InSDN-dataset\data\processed\train_data.csv
+2025-03-29 18:43:41,126 - INFO - Dataset shape: (240722, 85), Feature dimension: 84
+2025-03-29 18:43:42,062 - INFO - Data preprocessing completed
+2025-03-29 18:43:42,075 - INFO - DataLoader created with 941 batches
+2025-03-29 18:43:42,743 - INFO - Models initialized and moved to device
+2025-03-29 18:43:43,727 - INFO - Optimizers created
+2025-03-29 18:43:43,727 - INFO - Starting training loop
+2025-03-29 18:44:09,347 - INFO - Epoch [1/50] completed. Avg Loss D: 16.7379, Avg Loss G: 2.0369
+2025-03-29 18:44:34,672 - INFO - Epoch [2/50] completed. Avg Loss D: 10.3808, Avg Loss G: 2.0824
+2025-03-29 18:45:00,606 - INFO - Epoch [3/50] completed. Avg Loss D: 10.6989, Avg Loss G: 2.0822
+2025-03-29 18:45:26,008 - INFO - Epoch [4/50] completed. Avg Loss D: 10.4382, Avg Loss G: 2.0825
+2025-03-29 18:45:52,163 - INFO - Epoch [5/50] completed. Avg Loss D: 10.3461, Avg Loss G: 2.0823
+2025-03-29 18:45:52,163 - INFO - Saving loss plot to C:\Users\navee\OneDrive\Desktop\InSDN-dataset\scripts\..\reports\loss_plot.png
+2025-03-29 18:45:52,312 - INFO - Loss plot saved at epoch 5
+2025-03-29 18:46:18,510 - INFO - Epoch [6/50] completed. Avg Loss D: 10.3309, Avg Loss G: 2.0822
+2025-03-29 18:46:43,870 - INFO - Epoch [7/50] completed. Avg Loss D: 10.3408, Avg Loss G: 2.0821
+2025-03-29 18:47:19,206 - INFO - Epoch [8/50] completed. Avg Loss D: 10.3421, Avg Loss G: 2.0821
+2025-03-29 18:47:53,263 - INFO - Epoch [9/50] completed. Avg Loss D: 10.5058, Avg Loss G: 2.0823
+2025-03-29 18:48:29,983 - INFO - Epoch [10/50] completed. Avg Loss D: 10.3374, Avg Loss G: 2.0823
+2025-03-29 18:48:29,983 - INFO - Saving loss plot to C:\Users\navee\OneDrive\Desktop\InSDN-dataset\scripts\..\reports\loss_plot.png
+2025-03-29 18:48:30,102 - INFO - Loss plot saved at epoch 10
+2025-03-29 18:49:06,040 - INFO - Epoch [11/50] completed. Avg Loss D: 10.3254, Avg Loss G: 2.0825
+2025-03-29 18:49:38,999 - INFO - Epoch [12/50] completed. Avg Loss D: 10.3290, Avg Loss G: 2.0826
+2025-03-29 18:50:13,950 - INFO - Epoch [13/50] completed. Avg Loss D: 10.3410, Avg Loss G: 2.0828
+2025-03-29 18:50:48,284 - INFO - Epoch [14/50] completed. Avg Loss D: 10.4031, Avg Loss G: 2.0828
+2025-03-29 18:51:21,835 - INFO - Epoch [15/50] completed. Avg Loss D: 10.3285, Avg Loss G: 2.0829
+2025-03-29 18:51:21,835 - INFO - Saving loss plot to C:\Users\navee\OneDrive\Desktop\InSDN-dataset\scripts\..\reports\loss_plot.png
+2025-03-29 18:51:21,934 - INFO - Loss plot saved at epoch 15
+2025-03-29 18:51:55,405 - INFO - Epoch [16/50] completed. Avg Loss D: 10.3251, Avg Loss G: 2.0829
+2025-03-29 18:52:28,349 - INFO - Epoch [17/50] completed. Avg Loss D: 5.5980, Avg Loss G: 2.0504
+2025-03-29 18:53:01,446 - INFO - Epoch [18/50] completed. Avg Loss D: 3.3879, Avg Loss G: 1.8865
+2025-03-29 18:53:34,032 - INFO - Epoch [19/50] completed. Avg Loss D: 3.2283, Avg Loss G: 1.8242
+2025-03-29 18:54:07,475 - INFO - Epoch [20/50] completed. Avg Loss D: 3.1853, Avg Loss G: 1.8384
+2025-03-29 18:54:07,489 - INFO - Saving loss plot to C:\Users\navee\OneDrive\Desktop\InSDN-dataset\scripts\..\reports\loss_plot.png
+2025-03-29 18:54:07,674 - INFO - Loss plot saved at epoch 20
+2025-03-29 18:54:41,844 - INFO - Epoch [21/50] completed. Avg Loss D: 2.9095, Avg Loss G: 1.8782
+2025-03-29 18:55:15,585 - INFO - Epoch [22/50] completed. Avg Loss D: 2.1971, Avg Loss G: 1.7992
+2025-03-29 18:55:49,180 - INFO - Epoch [23/50] completed. Avg Loss D: 2.1911, Avg Loss G: 1.7597
+2025-03-29 18:56:15,510 - INFO - Epoch [24/50] completed. Avg Loss D: 2.1151, Avg Loss G: 1.7646
+2025-03-29 18:56:41,252 - INFO - Epoch [25/50] completed. Avg Loss D: 2.0724, Avg Loss G: 1.8481
+2025-03-29 18:56:41,252 - INFO - Saving loss plot to C:\Users\navee\OneDrive\Desktop\InSDN-dataset\scripts\..\reports\loss_plot.png
+2025-03-29 18:56:41,347 - INFO - Loss plot saved at epoch 25
+2025-03-29 18:57:07,077 - INFO - Epoch [26/50] completed. Avg Loss D: 2.0234, Avg Loss G: 1.8443
+2025-03-29 18:57:32,614 - INFO - Epoch [27/50] completed. Avg Loss D: 2.0771, Avg Loss G: 1.8597
+2025-03-29 18:57:58,778 - INFO - Epoch [28/50] completed. Avg Loss D: 1.9908, Avg Loss G: 1.8673
+2025-03-29 18:58:24,293 - INFO - Epoch [29/50] completed. Avg Loss D: 2.0110, Avg Loss G: 1.8735
+2025-03-29 18:58:50,243 - INFO - Epoch [30/50] completed. Avg Loss D: 2.2068, Avg Loss G: 1.8849
+2025-03-29 18:58:50,243 - INFO - Saving loss plot to C:\Users\navee\OneDrive\Desktop\InSDN-dataset\scripts\..\reports\loss_plot.png
+2025-03-29 18:58:50,359 - INFO - Loss plot saved at epoch 30
+2025-03-29 18:59:16,423 - INFO - Epoch [31/50] completed. Avg Loss D: 1.9540, Avg Loss G: 1.8898
+2025-03-29 18:59:41,901 - INFO - Epoch [32/50] completed. Avg Loss D: 1.9465, Avg Loss G: 1.9002
+2025-03-29 19:00:07,384 - INFO - Epoch [33/50] completed. Avg Loss D: 1.9333, Avg Loss G: 1.9076
+2025-03-29 19:00:30,809 - INFO - Epoch [34/50] completed. Avg Loss D: 1.9418, Avg Loss G: 1.9141
+2025-03-29 19:00:54,877 - INFO - Epoch [35/50] completed. Avg Loss D: 1.9078, Avg Loss G: 1.9208
+2025-03-29 19:00:54,877 - INFO - Saving loss plot to C:\Users\navee\OneDrive\Desktop\InSDN-dataset\scripts\..\reports\loss_plot.png
+2025-03-29 19:00:55,012 - INFO - Loss plot saved at epoch 35
+2025-03-29 19:01:20,531 - INFO - Epoch [36/50] completed. Avg Loss D: 1.9024, Avg Loss G: 1.9295
+2025-03-29 19:01:45,206 - INFO - Epoch [37/50] completed. Avg Loss D: 1.9724, Avg Loss G: 1.9405
+2025-03-29 19:02:10,455 - INFO - Epoch [38/50] completed. Avg Loss D: 1.8984, Avg Loss G: 1.9521
+2025-03-29 19:02:35,981 - INFO - Epoch [39/50] completed. Avg Loss D: 1.8849, Avg Loss G: 1.9590
+2025-03-29 19:03:01,623 - INFO - Epoch [40/50] completed. Avg Loss D: 1.8811, Avg Loss G: 1.9656
+2025-03-29 19:03:01,623 - INFO - Saving loss plot to C:\Users\navee\OneDrive\Desktop\InSDN-dataset\scripts\..\reports\loss_plot.png
+2025-03-29 19:03:01,744 - INFO - Loss plot saved at epoch 40
+2025-03-29 19:03:27,537 - INFO - Epoch [41/50] completed. Avg Loss D: 1.8657, Avg Loss G: 1.9779
+2025-03-29 19:03:52,470 - INFO - Epoch [42/50] completed. Avg Loss D: 1.8518, Avg Loss G: 1.9870
+2025-03-29 19:04:17,791 - INFO - Epoch [43/50] completed. Avg Loss D: 1.8470, Avg Loss G: 1.9942
+2025-03-29 19:04:43,021 - INFO - Epoch [44/50] completed. Avg Loss D: 1.8827, Avg Loss G: 2.0025
+2025-03-29 19:05:08,491 - INFO - Epoch [45/50] completed. Avg Loss D: 1.8507, Avg Loss G: 2.0132
+2025-03-29 19:05:08,491 - INFO - Saving loss plot to C:\Users\navee\OneDrive\Desktop\InSDN-dataset\scripts\..\reports\loss_plot.png
+2025-03-29 19:05:08,631 - INFO - Loss plot saved at epoch 45
+2025-03-29 19:05:34,134 - INFO - Epoch [46/50] completed. Avg Loss D: 1.8304, Avg Loss G: 2.0144
+2025-03-29 19:05:59,525 - INFO - Epoch [47/50] completed. Avg Loss D: 1.8190, Avg Loss G: 2.0186
+2025-03-29 19:06:23,591 - INFO - Epoch [48/50] completed. Avg Loss D: 1.8093, Avg Loss G: 2.0259
+2025-03-29 19:06:46,711 - INFO - Epoch [49/50] completed. Avg Loss D: 1.7964, Avg Loss G: 2.0290
+2025-03-29 19:07:12,031 - INFO - Epoch [50/50] completed. Avg Loss D: 1.7911, Avg Loss G: 2.0378
+2025-03-29 19:07:12,031 - INFO - Saving loss plot to C:\Users\navee\OneDrive\Desktop\InSDN-dataset\scripts\..\reports\loss_plot.png
+2025-03-29 19:07:12,199 - INFO - Loss plot saved at epoch 50
+2025-03-29 19:07:12,199 - INFO - Training completed. Saving final results...
+2025-03-29 19:07:12,199 - INFO - Saving loss plot to C:\Users\navee\OneDrive\Desktop\InSDN-dataset\scripts\..\reports\final_loss_plot.png
+2025-03-29 19:07:12,315 - INFO - Models saved in C:\Users\navee\OneDrive\Desktop\InSDN-dataset\scripts\..\data\models
+2025-03-29 19:07:12,328 - INFO - Loss history saved
+2025-03-29 19:07:12,328 - INFO - GAN training completed successfully
+2025-03-29 19:23:36,323 - INFO - Using device: cuda
+2025-03-29 19:23:41,069 - INFO - Starting training loop
+2025-03-29 19:24:11,319 - INFO - Using device: cuda
+2025-03-29 19:24:18,055 - INFO - Starting training loop
+2025-03-29 19:24:43,386 - INFO - Epoch [1/100] completed. Avg Loss D: 1.3444, Avg Loss G: -0.0604
+2025-03-29 19:25:08,660 - INFO - Epoch [2/100] completed. Avg Loss D: 1.1791, Avg Loss G: -0.0761
+2025-03-29 19:25:34,012 - INFO - Epoch [3/100] completed. Avg Loss D: 0.8484, Avg Loss G: -0.0656
+2025-03-29 19:25:58,820 - INFO - Epoch [4/100] completed. Avg Loss D: 0.5509, Avg Loss G: -0.0580
+2025-03-29 19:26:23,860 - INFO - Epoch [5/100] completed. Avg Loss D: 0.3733, Avg Loss G: -0.0488
+2025-03-29 19:26:24,017 - INFO - Loss plot saved at epoch 5
+2025-03-29 19:26:49,011 - INFO - Epoch [6/100] completed. Avg Loss D: 0.1932, Avg Loss G: -0.0440
+2025-03-29 19:27:13,989 - INFO - Epoch [7/100] completed. Avg Loss D: 0.0443, Avg Loss G: -0.0421
+2025-03-29 19:27:38,700 - INFO - Epoch [8/100] completed. Avg Loss D: -0.0706, Avg Loss G: -0.0332
+2025-03-29 19:28:03,707 - INFO - Epoch [9/100] completed. Avg Loss D: -0.1942, Avg Loss G: -0.0239
+2025-03-29 19:28:28,450 - INFO - Epoch [10/100] completed. Avg Loss D: -0.1037, Avg Loss G: -0.0291
+2025-03-29 19:28:28,544 - INFO - Loss plot saved at epoch 10
+2025-03-29 19:28:54,257 - INFO - Epoch [11/100] completed. Avg Loss D: 0.0541, Avg Loss G: -0.0500
+2025-03-29 19:29:19,289 - INFO - Epoch [12/100] completed. Avg Loss D: -0.0589, Avg Loss G: -0.0378
+2025-03-29 19:29:44,537 - INFO - Epoch [13/100] completed. Avg Loss D: -0.2322, Avg Loss G: -0.0305
+2025-03-29 19:30:09,782 - INFO - Epoch [14/100] completed. Avg Loss D: -0.2908, Avg Loss G: -0.0276
+2025-03-29 19:30:34,862 - INFO - Epoch [15/100] completed. Avg Loss D: -0.3223, Avg Loss G: -0.0235
+2025-03-29 19:30:34,956 - INFO - Loss plot saved at epoch 15
+2025-03-29 19:31:07,065 - INFO - Epoch [16/100] completed. Avg Loss D: -0.3535, Avg Loss G: -0.0240
+2025-03-29 19:31:32,270 - INFO - Epoch [17/100] completed. Avg Loss D: -0.3891, Avg Loss G: -0.0236
+2025-03-29 19:32:02,217 - INFO - Epoch [18/100] completed. Avg Loss D: -0.2996, Avg Loss G: -0.0308
+2025-03-29 19:32:48,842 - INFO - Epoch [19/100] completed. Avg Loss D: -0.2982, Avg Loss G: -0.0344
+2025-03-29 19:33:13,553 - INFO - Epoch [20/100] completed. Avg Loss D: -0.4091, Avg Loss G: -0.0166
+2025-03-29 19:33:13,674 - INFO - Loss plot saved at epoch 20
+2025-03-29 19:33:39,560 - INFO - Epoch [21/100] completed. Avg Loss D: -0.4158, Avg Loss G: -0.0269
+2025-03-29 19:34:05,187 - INFO - Epoch [22/100] completed. Avg Loss D: -0.4204, Avg Loss G: -0.0257
+2025-03-29 19:34:31,469 - INFO - Epoch [23/100] completed. Avg Loss D: -0.4141, Avg Loss G: -0.0289
+2025-03-29 19:34:56,686 - INFO - Epoch [24/100] completed. Avg Loss D: -0.3724, Avg Loss G: -0.0385
+2025-03-29 19:35:22,879 - INFO - Epoch [25/100] completed. Avg Loss D: 1.1919, Avg Loss G: -0.0298
+2025-03-29 19:35:22,981 - INFO - Loss plot saved at epoch 25
+2025-03-29 19:36:05,750 - INFO - Epoch [26/100] completed. Avg Loss D: -0.3186, Avg Loss G: -0.0303
+2025-03-29 19:37:04,457 - INFO - Epoch [27/100] completed. Avg Loss D: 0.1890, Avg Loss G: -0.0889
+2025-03-29 19:38:03,442 - INFO - Epoch [28/100] completed. Avg Loss D: -0.0479, Avg Loss G: -0.0606
+2025-03-29 19:38:38,824 - INFO - Epoch [29/100] completed. Avg Loss D: -0.1201, Avg Loss G: -0.0599
+2025-03-29 19:39:04,282 - INFO - Epoch [30/100] completed. Avg Loss D: -0.4079, Avg Loss G: -0.0183
+2025-03-29 19:39:04,379 - INFO - Loss plot saved at epoch 30
+2025-03-29 19:39:33,342 - INFO - Epoch [31/100] completed. Avg Loss D: -0.4390, Avg Loss G: -0.0318
+2025-03-29 19:47:47,961 - INFO - Epoch [32/100] completed. Avg Loss D: -0.3513, Avg Loss G: -0.0556
+2025-03-29 19:48:14,430 - INFO - Epoch [33/100] completed. Avg Loss D: -0.4019, Avg Loss G: -0.0431
+2025-03-29 19:48:41,146 - INFO - Epoch [34/100] completed. Avg Loss D: -0.4782, Avg Loss G: -0.0346
+2025-03-29 19:49:07,824 - INFO - Epoch [35/100] completed. Avg Loss D: -0.5436, Avg Loss G: -0.0172
+2025-03-29 19:49:07,957 - INFO - Loss plot saved at epoch 35
+2025-03-29 19:49:34,510 - INFO - Epoch [36/100] completed. Avg Loss D: -0.5120, Avg Loss G: -0.0278
+2025-03-29 19:50:17,173 - INFO - Epoch [37/100] completed. Avg Loss D: -0.5656, Avg Loss G: -0.0264
+2025-03-29 19:51:20,256 - INFO - Epoch [38/100] completed. Avg Loss D: -0.5930, Avg Loss G: -0.0120
+2025-03-29 19:52:25,397 - INFO - Epoch [39/100] completed. Avg Loss D: -0.5569, Avg Loss G: -0.0100
+2025-03-29 19:53:47,657 - INFO - Epoch [40/100] completed. Avg Loss D: -0.5978, Avg Loss G: -0.0113
+2025-03-29 19:53:47,797 - INFO - Loss plot saved at epoch 40
+2025-03-29 19:54:18,673 - INFO - Epoch [41/100] completed. Avg Loss D: -0.6169, Avg Loss G: -0.0197
+2025-03-29 19:54:48,957 - INFO - Epoch [42/100] completed. Avg Loss D: -0.5430, Avg Loss G: -0.0455
+2025-03-29 19:55:19,982 - INFO - Epoch [43/100] completed. Avg Loss D: -0.5809, Avg Loss G: -0.0212
+2025-03-29 19:55:50,570 - INFO - Epoch [44/100] completed. Avg Loss D: -0.5784, Avg Loss G: -0.0236
+2025-03-29 19:56:21,360 - INFO - Epoch [45/100] completed. Avg Loss D: -0.4306, Avg Loss G: -0.0610
+2025-03-29 19:56:21,460 - INFO - Loss plot saved at epoch 45
+2025-03-29 19:56:51,829 - INFO - Epoch [46/100] completed. Avg Loss D: -0.5562, Avg Loss G: -0.0314
+2025-03-29 19:57:22,088 - INFO - Epoch [47/100] completed. Avg Loss D: -0.6061, Avg Loss G: -0.0135
+2025-03-29 19:57:52,730 - INFO - Epoch [48/100] completed. Avg Loss D: -0.5989, Avg Loss G: -0.0293
+2025-03-29 19:58:23,217 - INFO - Epoch [49/100] completed. Avg Loss D: -0.5828, Avg Loss G: -0.0466
+2025-03-29 19:58:53,371 - INFO - Epoch [50/100] completed. Avg Loss D: -0.5572, Avg Loss G: -0.0417
+2025-03-29 19:58:53,497 - INFO - Loss plot saved at epoch 50
+2025-03-29 19:59:58,185 - INFO - Epoch [51/100] completed. Avg Loss D: -0.4893, Avg Loss G: -0.0336
+2025-03-29 20:00:28,514 - INFO - Epoch [52/100] completed. Avg Loss D: -0.6422, Avg Loss G: -0.0069
+2025-03-29 20:00:58,928 - INFO - Epoch [53/100] completed. Avg Loss D: -0.6610, Avg Loss G: 0.0039
+2025-03-29 20:01:29,249 - INFO - Epoch [54/100] completed. Avg Loss D: -0.6795, Avg Loss G: 0.0028
+2025-03-29 20:02:00,036 - INFO - Epoch [55/100] completed. Avg Loss D: -0.6706, Avg Loss G: -0.0050
+2025-03-29 20:02:00,136 - INFO - Loss plot saved at epoch 55
+2025-03-29 20:02:31,347 - INFO - Epoch [56/100] completed. Avg Loss D: -0.6669, Avg Loss G: -0.0023
+2025-03-29 20:07:30,395 - INFO - Epoch [57/100] completed. Avg Loss D: -0.6829, Avg Loss G: -0.0016
+2025-03-29 20:08:00,709 - INFO - Epoch [58/100] completed. Avg Loss D: -0.6898, Avg Loss G: 0.0000
+2025-03-29 20:08:32,219 - INFO - Epoch [59/100] completed. Avg Loss D: -0.7031, Avg Loss G: 0.0096
+2025-03-29 20:09:04,484 - INFO - Epoch [60/100] completed. Avg Loss D: -0.7057, Avg Loss G: 0.0102
+2025-03-29 20:09:04,579 - INFO - Loss plot saved at epoch 60
+2025-03-29 20:09:35,765 - INFO - Epoch [61/100] completed. Avg Loss D: -0.6558, Avg Loss G: 0.0010
+2025-03-29 20:10:06,033 - INFO - Epoch [62/100] completed. Avg Loss D: -0.5331, Avg Loss G: -0.0651
+2025-03-29 20:10:36,689 - INFO - Epoch [63/100] completed. Avg Loss D: -0.6582, Avg Loss G: -0.0174
+2025-03-29 20:11:07,101 - INFO - Epoch [64/100] completed. Avg Loss D: -0.6931, Avg Loss G: 0.0036
+2025-03-29 20:11:37,316 - INFO - Epoch [65/100] completed. Avg Loss D: -0.7039, Avg Loss G: 0.0116
+2025-03-29 20:11:37,416 - INFO - Loss plot saved at epoch 65
+2025-03-29 20:12:07,152 - INFO - Epoch [66/100] completed. Avg Loss D: -0.7073, Avg Loss G: 0.0149
+2025-03-29 20:12:36,899 - INFO - Epoch [67/100] completed. Avg Loss D: -0.7094, Avg Loss G: 0.0183
+2025-03-29 20:13:07,623 - INFO - Epoch [68/100] completed. Avg Loss D: -0.4792, Avg Loss G: -0.0647
+2025-03-29 20:14:27,552 - INFO - Epoch [69/100] completed. Avg Loss D: -0.3698, Avg Loss G: -0.0393
+2025-03-29 20:14:57,717 - INFO - Epoch [70/100] completed. Avg Loss D: -0.4687, Avg Loss G: -0.0347
+2025-03-29 20:14:57,824 - INFO - Loss plot saved at epoch 70
+2025-03-29 20:15:28,676 - INFO - Epoch [71/100] completed. Avg Loss D: -0.5462, Avg Loss G: -0.0286
+2025-03-29 20:15:58,701 - INFO - Epoch [72/100] completed. Avg Loss D: -0.5875, Avg Loss G: -0.0249
+2025-03-29 20:16:29,470 - INFO - Epoch [73/100] completed. Avg Loss D: -0.6138, Avg Loss G: -0.0219
+2025-03-29 20:16:59,826 - INFO - Epoch [74/100] completed. Avg Loss D: -0.6258, Avg Loss G: -0.0224
+2025-03-29 20:17:30,650 - INFO - Epoch [75/100] completed. Avg Loss D: -0.6279, Avg Loss G: -0.0257
+2025-03-29 20:17:30,762 - INFO - Loss plot saved at epoch 75
+2025-03-29 20:26:27,779 - INFO - Epoch [76/100] completed. Avg Loss D: -0.6362, Avg Loss G: -0.0239
+2025-03-29 20:26:59,528 - INFO - Epoch [77/100] completed. Avg Loss D: -0.6494, Avg Loss G: -0.0208
+2025-03-29 20:27:30,277 - INFO - Epoch [78/100] completed. Avg Loss D: -0.6547, Avg Loss G: -0.0197
+2025-03-29 20:28:00,732 - INFO - Epoch [79/100] completed. Avg Loss D: -0.6562, Avg Loss G: -0.0175
+2025-03-29 20:28:31,570 - INFO - Epoch [80/100] completed. Avg Loss D: -0.6576, Avg Loss G: -0.0151
+2025-03-29 20:28:31,659 - INFO - Loss plot saved at epoch 80
+2025-03-29 20:29:02,758 - INFO - Epoch [81/100] completed. Avg Loss D: -0.6576, Avg Loss G: -0.0166
+2025-03-29 20:29:32,519 - INFO - Epoch [82/100] completed. Avg Loss D: -0.6630, Avg Loss G: -0.0163
+2025-03-29 20:30:03,007 - INFO - Epoch [83/100] completed. Avg Loss D: -0.6665, Avg Loss G: -0.0136
+2025-03-29 20:30:33,129 - INFO - Epoch [84/100] completed. Avg Loss D: -0.6738, Avg Loss G: -0.0138
+2025-03-29 20:31:03,403 - INFO - Epoch [85/100] completed. Avg Loss D: -0.6741, Avg Loss G: -0.0125
+2025-03-29 20:31:03,499 - INFO - Loss plot saved at epoch 85
+2025-03-29 20:31:34,202 - INFO - Epoch [86/100] completed. Avg Loss D: -0.6740, Avg Loss G: -0.0119
+2025-03-29 20:40:30,838 - INFO - Epoch [87/100] completed. Avg Loss D: -0.6733, Avg Loss G: -0.0130
+2025-03-29 20:41:02,547 - INFO - Epoch [88/100] completed. Avg Loss D: -0.6705, Avg Loss G: -0.0133
+2025-03-29 20:41:32,771 - INFO - Epoch [89/100] completed. Avg Loss D: -0.6716, Avg Loss G: -0.0144
+2025-03-29 20:42:02,772 - INFO - Epoch [90/100] completed. Avg Loss D: -0.6595, Avg Loss G: -0.0169
+2025-03-29 20:42:02,860 - INFO - Loss plot saved at epoch 90
+2025-03-29 20:42:33,615 - INFO - Epoch [91/100] completed. Avg Loss D: -0.6573, Avg Loss G: -0.0183
+2025-03-29 20:43:03,850 - INFO - Epoch [92/100] completed. Avg Loss D: -0.6585, Avg Loss G: -0.0200
+2025-03-29 20:43:34,844 - INFO - Epoch [93/100] completed. Avg Loss D: -0.6524, Avg Loss G: -0.0218
+2025-03-29 20:44:15,175 - INFO - Epoch [94/100] completed. Avg Loss D: -0.6470, Avg Loss G: -0.0257
+2025-03-29 20:44:45,766 - INFO - Epoch [95/100] completed. Avg Loss D: -0.6345, Avg Loss G: -0.0321
+2025-03-29 20:44:45,859 - INFO - Loss plot saved at epoch 95
+2025-03-29 20:45:16,715 - INFO - Epoch [96/100] completed. Avg Loss D: -0.6290, Avg Loss G: -0.0349
+2025-03-29 20:45:47,646 - INFO - Epoch [97/100] completed. Avg Loss D: -0.6264, Avg Loss G: -0.0373
+2025-03-29 20:46:18,440 - INFO - Epoch [98/100] completed. Avg Loss D: -0.6215, Avg Loss G: -0.0411
+2025-03-29 20:46:49,169 - INFO - Epoch [99/100] completed. Avg Loss D: -0.6119, Avg Loss G: -0.0473
+2025-03-29 20:47:20,141 - INFO - Epoch [100/100] completed. Avg Loss D: -0.6052, Avg Loss G: -0.0497
+2025-03-29 20:47:20,265 - INFO - Loss plot saved at epoch 100
+2025-03-29 20:47:20,415 - INFO - Training completed successfully
