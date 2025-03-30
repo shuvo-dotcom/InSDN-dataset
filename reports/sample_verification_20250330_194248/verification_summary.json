@@ -1,0 +1,11 @@
+{
+  "timestamp": "20250330_194248",
+  "total_samples": 20,
+  "successful_verifications": 0,
+  "sample_results": [],
+  "accuracy_summary": {
+    "overall_accuracy": [],
+    "feature_accuracy": {},
+    "sample_details": []
+  }
+}
