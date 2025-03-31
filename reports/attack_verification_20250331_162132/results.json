@@ -1,0 +1,464 @@
+{
+  "results": [
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 8,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 8,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 7,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 8,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 4,
+      "key_indicators": [
+        "5. the key indicator leading to this conclusion is the presence of negative values in the data, which are not typically seen in network traffic analysis and could indicate an error in data collection or processing."
+      ]
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 8,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 10,
+      "key_indicators": [
+        "5. key indicators that led to this conclusion"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 8,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 8,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 8,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 7,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 8,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 8,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 8,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 7,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN-based detection"
+      ]
+    }
+  ],
+  "attack_types": {
+    "ddos": 45
+  },
+  "severity_distribution": {
+    "LOW": 0,
+    "MEDIUM": 0,
+    "HIGH": 45
+  },
+  "threat_levels": {
+    "9": 32,
+    "8": 10,
+    "7": 3
+  },
+  "suspicious_patterns": {
+    "GAN-based detection": 45
+  }
+}

@@ -21,6 +21,12 @@ def preprocess_data():
     # Combine normal and anomaly data (adjust proportions as needed)
     combined_df = pd.concat([normal_df, anomaly_df])
 
+    # Select exactly 84 features (excluding label)
+    feature_columns = combined_df.columns.tolist()
+    feature_columns.remove('label')
+    feature_columns = feature_columns[:84]  # Ensure exactly 84 features
+    combined_df = combined_df[feature_columns + ['label']]
+
     # Shuffle the dataset
     combined_df = combined_df.sample(frac=1).reset_index(drop=True)
 
@@ -34,3 +40,7 @@ def preprocess_data():
     test_df.to_csv(os.path.join(base_dir, 'processed', 'test_data.csv'), index=False)
 
     print(f"Data preprocessing complete. Files saved in '{os.path.join(base_dir, 'processed')}'.")
+    print(f"Number of features: {len(feature_columns)}")
+
+if __name__ == "__main__":
+    preprocess_data()

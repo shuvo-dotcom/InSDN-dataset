@@ -1,0 +1,242 @@
+{
+  "timestamp": "20250331_091918",
+  "attack_summary": {
+    "total_samples": 10,
+    "malicious_samples": 10,
+    "attack_types": {
+      "botnet": 7,
+      "port_scan": 1
+    },
+    "severity_levels": {
+      "LOW": 0,
+      "MEDIUM": 0,
+      "HIGH": 10
+    },
+    "threat_levels": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 10,
+      "10": 0
+    },
+    "suspicious_patterns": {
+      "High packet rate: 562.32 pkts/s": 1,
+      "ACK flag count: 1.0": 3,
+      "PSH flag count: 1.0": 1,
+      "Non-standard port: 80": 1,
+      "Unusual packet size: min=0.0, max=1.0": 1,
+      "Unusual flow duration: 10670.00": 1,
+      "High packet rate: 1134.11 pkts/s": 1,
+      "High byte rate: 227955.77 bytes/s": 1,
+      "Non-standard port: 53": 1,
+      "High packet rate: 86956.52 pkts/s": 1,
+      "Non-standard port: 0": 5,
+      "Unusual timing pattern: mean=23.00, std=0.00": 1,
+      "Unusual packet size: min=0.0, max=0.0": 6,
+      "FIN flag count: 1.0": 1,
+      "Unusual packet size: min=0.0, max=30.0": 2,
+      "Unusual flow duration: 68355.00": 1,
+      "High packet rate: 153846.15 pkts/s": 1,
+      "Unusual timing pattern: mean=13.00, std=0.00": 1,
+      "High packet rate: 1000000.00 pkts/s": 1,
+      "Unusual timing pattern: mean=2.00, std=0.00": 1,
+      "High packet rate: 2000000.00 pkts/s": 1,
+      "Unusual timing pattern: mean=1.00, std=0.00": 1,
+      "Non-standard port: 60520": 1,
+      "Unusual flow duration: 49731.00": 1,
+      "SYN flag count: 1.0": 1,
+      "Unusual flow duration: 54838.00": 1,
+      "High packet rate: 111111.11 pkts/s": 1,
+      "Unusual timing pattern: mean=18.00, std=0.00": 1
+    },
+    "attack_vectors": {},
+    "malicious_percentage": 100.0
+  },
+  "detailed_results": [
+    {
+      "sample_index": 0,
+      "analysis": "1. Attack Classification:\nThe attack can be classified as a botnet attack. Botnets are networks of compromised computers controlled by an attacker, often used to launch coordinated attacks or to spread malware. The high malicious confidence and severity level indicate that this is a serious threat.\n\n2. Threat Analysis:\nThe threat level is very high, at 9 out of 10. The high packet rate, unusual packet size, and unusual flow duration are all indicators of a potential botnet attack. The use of a non-standard port (80) could be an attempt to bypass network security measures. The ACK and PSH flag counts indicate that the attacker is attempting to establish and maintain a connection with the targeted system.\n\n3. Network Behavior Analysis:\nThe high packet rate suggests that the attacker is flooding the network with traffic, possibly in an attempt to overwhelm the system and disrupt normal operations. The unusual packet size and flow duration could be attempts to evade detection by network security tools. The use of a non-standard port suggests that the attacker is trying to exploit vulnerabilities in the network's security configuration.\n\n4. Specific Recommendations:\nGiven the severity of this threat, immediate action is required. Here are some recommendations:\n\n   - Isolate the affected systems to prevent the spread of the botnet within the network.\n   - Update and patch all systems to fix any known vulnerabilities that the botnet might be exploiting.\n   - Increase the security settings on your firewall to block traffic from non-standard ports.\n   - Implement an Intrusion Detection System (IDS) to monitor network traffic for signs of malicious activity.\n   - Conduct a thorough investigation to identify the source of the botnet and take appropriate legal action.\n   - Provide training to staff on how to recognize and avoid potential security threats.\n   - Regularly backup important data and ensure that it can be quickly restored in case of a system compromise.\n   - Consider consulting with a cybersecurity firm for a thorough analysis and remediation of the attack.",
+      "metrics": {
+        "is_malicious": true,
+        "confidence": 130,
+        "attack_type": "botnet",
+        "severity": "HIGH",
+        "indicators": [
+          "High packet rate: 562.32 pkts/s",
+          "ACK flag count: 1.0",
+          "PSH flag count: 1.0",
+          "Non-standard port: 80",
+          "Unusual packet size: min=0.0, max=1.0",
+          "Unusual flow duration: 10670.00"
+        ],
+        "threat_level": 9
+      },
+      "timestamp": "20250331_091638"
+    },
+    {
+      "sample_index": 0,
+      "analysis": "1. Attack Classification:\nThe attack type is classified as a botnet, which is a network of compromised computers controlled by an attacker, often used for malicious activities such as DDoS attacks, spamming, or distributing malware. The use of a non-standard port (53) typically used for DNS queries suggests that the attacker might be using DNS tunneling to hide malicious traffic.\n\n2. Threat Analysis:\nThe threat level is quite high (9/10) and the malicious confidence is 85%, indicating a high likelihood of an ongoing attack. The severity level is also high, suggesting that the attack could potentially cause significant damage to the network or system. The high packet rate and high byte rate are indicative of a DDoS attack, which could overwhelm the network and cause service disruption. \n\n3. Network Behavior Analysis:\nThe high packet rate and high byte rate are unusual and could indicate a botnet-driven DDoS attack. The use of port 53, typically used for DNS, could suggest DNS tunneling. This is a technique where attackers encapsulate malicious traffic within DNS queries and responses to bypass network security measures. This could be a sign that the attacker is trying to exfiltrate data or establish a command and control channel.\n\n4. Specific Recommendations:\n- Implement rate limiting on your network to mitigate the effects of the DDoS attack. This can help to prevent your network from being overwhelmed by the high packet and byte rates.\n- Configure your firewall to restrict traffic on port 53 to only legitimate DNS servers. This can help to prevent DNS tunneling.\n- Consider implementing a DNS security solution that can detect and block malicious DNS activity.\n- Regularly update and patch your systems to protect against known vulnerabilities that could be exploited by the botnet.\n- Implement intrusion detection systems (IDS) and intrusion prevention systems (IPS) to detect and respond to malicious activity.\n- Regularly monitor your network traffic for any unusual activity or patterns that could indicate an attack.",
+      "metrics": {
+        "is_malicious": true,
+        "confidence": 85,
+        "attack_type": "botnet",
+        "severity": "HIGH",
+        "indicators": [
+          "High packet rate: 1134.11 pkts/s",
+          "High byte rate: 227955.77 bytes/s",
+          "Non-standard port: 53"
+        ],
+        "threat_level": 9
+      },
+      "timestamp": "20250331_091652"
+    },
+    {
+      "sample_index": 0,
+      "analysis": "1. Attack Classification:\nThe attack type is classified as a botnet. Botnets are networks of infected computers, known as 'bots', which are under the control of a single attacker or group. These bots are used to perform various types of malicious activities, such as DDoS attacks, spamming, and data theft. The high malicious confidence of 105% and the high severity level indicate that this is a serious threat.\n\n2. Threat Analysis:\nThe threat level is very high, at 9 out of 10. This suggests that the attack could have a significant impact on the network's performance and security. The high packet rate of 86956.52 packets per second is a clear indicator of a DDoS attack, which is a common use of botnets. The unusual timing pattern and packet size also suggest that the botnet is using some form of advanced evasion technique to avoid detection.\n\n3. Network Behavior Analysis:\nThe network traffic sample shows a high packet rate, which is a common characteristic of a DDoS attack. This could lead to a network slowdown or even a complete shutdown. The use of a non-standard port (0) is also suspicious, as attackers often use non-standard ports to bypass security measures. The unusual timing pattern and packet size suggest that the attacker is using advanced techniques to avoid detection and analysis.\n\n4. Specific Recommendations:\nGiven the severity of this threat, immediate action is required. Here are some recommendations:\n\n   - Isolate the affected systems to prevent the botnet from spreading within the network.\n   - Implement rate limiting to control the traffic and mitigate the impact of the DDoS attack.\n   - Update and patch all systems to fix any vulnerabilities that the botnet might be exploiting.\n   - Use advanced threat detection tools that can detect unusual traffic patterns and packet sizes.\n   - Block traffic from the non-standard port (0) as this is a clear indicator of malicious activity.\n   - Consider seeking assistance from a professional incident response team to help manage the situation and prevent future attacks.\n\nRemember, the key to dealing with botnet attacks is to act quickly to minimize damage and prevent the attacker from achieving their objectives.",
+      "metrics": {
+        "is_malicious": true,
+        "confidence": 105,
+        "attack_type": "botnet",
+        "severity": "HIGH",
+        "indicators": [
+          "High packet rate: 86956.52 pkts/s",
+          "Non-standard port: 0",
+          "Unusual timing pattern: mean=23.00, std=0.00",
+          "Unusual packet size: min=0.0, max=0.0"
+        ],
+        "threat_level": 9
+      },
+      "timestamp": "20250331_091709"
+    },
+    {
+      "sample_index": 0,
+      "analysis": "1. Attack Classification:\nThe attack classification is not specified in the provided metrics. However, given the high malicious confidence (75%), high severity level, and high threat level (9/10), it is likely that this is a serious attack. The presence of both ACK and FIN flags, along with unusual packet sizes and flow durations, could suggest some form of network scanning or probing, possibly a part of a larger attack such as a Denial of Service (DoS) or a Distributed Denial of Service (DDoS) attack.\n\n2. Threat Analysis:\nThe threat level is quite high (9/10), indicating a serious threat to the network. The unusual packet size and flow duration suggest abnormal network behavior, which could be an indicator of malicious activity. The presence of both ACK and FIN flags could indicate that the attacker is trying to manipulate the TCP/IP handshake process to gain unauthorized access or disrupt service.\n\n3. Network Behavior Analysis:\nThe network behavior indicated by the metrics is unusual. The presence of both ACK and FIN flags in the same packet is not typical under normal circumstances. This could indicate an attempt to confuse or bypass network security measures. The unusual packet size (min=0.0, max=30.0) and unusual flow duration (68355.00) could be an attempt to evade detection by blending in with normal traffic or to overload the network.\n\n4. Specific Recommendations:\nGiven the high threat level and severity, immediate action is required. Here are some recommendations:\n\n   - Isolate the affected network segment to prevent further spread of the potential attack.\n   - Analyze the source and destination IP addresses of the suspicious packets to identify the potential attacker or victim machines.\n   - Implement stricter firewall rules to block or limit traffic that matches the patterns observed in the attack.\n   - Increase the monitoring level of network traffic to detect any further unusual behavior.\n   - Update intrusion detection/prevention systems (IDS/IPS) with the latest signatures.\n   - Conduct a thorough investigation to understand the full scope of the attack and to identify any systems that may have been compromised.\n   - After the attack has been mitigated, conduct a review of the incident to identify any lessons learned and to improve the organization's security posture.",
+      "metrics": {
+        "is_malicious": true,
+        "confidence": 75,
+        "attack_type": null,
+        "severity": "HIGH",
+        "indicators": [
+          "ACK flag count: 1.0",
+          "FIN flag count: 1.0",
+          "Unusual packet size: min=0.0, max=30.0",
+          "Unusual flow duration: 68355.00"
+        ],
+        "threat_level": 9
+      },
+      "timestamp": "20250331_091726"
+    },
+    {
+      "sample_index": 0,
+      "analysis": "1. Attack Classification:\nThe attack type is classified as a botnet. Botnets are networks of compromised computers controlled by an attacker, often used to launch large-scale attacks. The high malicious confidence of 105% and severity level being HIGH indicates that the system is highly confident that this is a malicious attack. The threat level of 9/10 further confirms the seriousness of the attack.\n\n2. Threat Analysis:\nThe threat is severe, as indicated by the high threat level. The high packet rate of 153846.15 pkts/s suggests a possible Distributed Denial of Service (DDoS) attack, where the attacker overwhelms the network with traffic to disrupt its normal functioning. The unusual timing pattern and packet size (both min and max being 0.0) suggest that the attacker is using advanced techniques to avoid detection. The use of a non-standard port (0) may indicate an attempt to bypass security measures.\n\n3. Network Behavior Analysis:\nThe network is experiencing a high volume of traffic, likely due to the botnet. The unusual timing pattern and packet size suggest that the attacker is trying to blend in with normal traffic to avoid detection. The use of a non-standard port could be an attempt to bypass firewall rules or other security measures. \n\n4. Specific Recommendations:\nGiven the severity of the threat, immediate action is required. Here are some recommendations:\n- Isolate affected systems to prevent the spread of the botnet within the network.\n- Increase monitoring on the network to identify any additional suspicious behavior.\n- Implement rate limiting to control the traffic and mitigate the potential DDoS attack.\n- Investigate the source of the high packet rate traffic and block it if necessary.\n- Update firewall rules to block traffic on non-standard ports.\n- Conduct a thorough investigation to identify how the botnet was able to infiltrate the network and take steps to prevent future attacks.\n- Consider involving law enforcement or a cybersecurity firm to assist in the investigation and mitigation of the attack. \n\nRemember, it's crucial to keep all systems and security software up-to-date to protect against known vulnerabilities that botnets often exploit. Regularly educate employees about the dangers of phishing emails and other common attack vectors to reduce the risk of compromise.",
+      "metrics": {
+        "is_malicious": true,
+        "confidence": 105,
+        "attack_type": "botnet",
+        "severity": "HIGH",
+        "indicators": [
+          "High packet rate: 153846.15 pkts/s",
+          "Non-standard port: 0",
+          "Unusual timing pattern: mean=13.00, std=0.00",
+          "Unusual packet size: min=0.0, max=0.0"
+        ],
+        "threat_level": 9
+      },
+      "timestamp": "20250331_091742"
+    },
+    {
+      "sample_index": 0,
+      "analysis": "1. Attack Classification:\nThe attack type is classified as a botnet. Botnets are networks of compromised computers, controlled by an attacker (botmaster) to perform coordinated functions. The high malicious confidence and severity level, along with the high threat level, indicate a significant botnet attack.\n\n2. Threat Analysis:\nThe threat level is extremely high (9/10), indicating a serious threat to the network. The high packet rate (1,000,000 packets per second) suggests a potential Distributed Denial of Service (DDoS) attack, which could overwhelm the network and disrupt services. The use of a non-standard port (0) indicates that the attacker is trying to evade detection by using uncommon communication channels. The unusual timing pattern and packet size (both min and max are 0.0) suggest that the attacker may be using advanced techniques to avoid detection or to confuse security systems.\n\n3. Network Behavior Analysis:\nThe high packet rate is a clear sign of a potential DDoS attack. Normal network traffic would not generate such a high packet rate. The use of non-standard port 0 is also suspicious, as this port is typically reserved and not used for regular network traffic. The unusual timing pattern (mean=2.00, std=0.00) and packet size (min=0.0, max=0.0) are anomalies that deviate from normal network behavior, indicating potential malicious activity.\n\n4. Specific Recommendations:\n- Implement advanced botnet detection and mitigation tools to identify and neutralize the botnet.\n- Increase network monitoring to identify and respond to unusual traffic patterns or high packet rates.\n- Block or restrict traffic on non-standard ports, especially port 0, unless there is a specific need for them.\n- Implement anomaly-based intrusion detection systems to identify unusual timing patterns and packet sizes.\n- Regularly update and patch all systems to protect against known vulnerabilities that could be exploited by botnets.\n- Educate staff about the dangers of botnets and how they can be inadvertently downloaded or installed.\n- Consider seeking assistance from cybersecurity professionals or a managed security service provider to handle this high-level threat.",
+      "metrics": {
+        "is_malicious": true,
+        "confidence": 105,
+        "attack_type": "botnet",
+        "severity": "HIGH",
+        "indicators": [
+          "High packet rate: 1000000.00 pkts/s",
+          "Non-standard port: 0",
+          "Unusual timing pattern: mean=2.00, std=0.00",
+          "Unusual packet size: min=0.0, max=0.0"
+        ],
+        "threat_level": 9
+      },
+      "timestamp": "20250331_091802"
+    },
+    {
+      "sample_index": 0,
+      "analysis": "1. Attack Classification:\nThe attack type has been identified as a botnet. Botnets are networks of private computers infected with malicious software and controlled as a group without the owners' knowledge. They are typically used to send spam or perform distributed denial-of-service (DDoS) attacks. The high malicious confidence (105%) and severity level (HIGH) further confirm the malicious nature of this network traffic.\n\n2. Threat Analysis:\nThe threat level is extremely high (9/10), indicating a significant risk to the network. The high packet rate (2000000.00 pkts/s) suggests a potential DDoS attack, where the attacker is trying to overwhelm the network with traffic to cause a service disruption. The non-standard port (0) and unusual packet size (min=0.0, max=0.0) could indicate an attempt to evade detection or exploit vulnerabilities. The unusual timing pattern (mean=1.00, std=0.00) could be a sign of automated activity, consistent with a botnet.\n\n3. Network Behavior Analysis:\nThe network behavior is highly unusual and indicative of malicious activity. The high packet rate is far beyond normal levels, suggesting an attempt to overwhelm the network. The use of a non-standard port could be an attempt to bypass security measures. The unusual timing pattern and packet size suggest automated, non-human activity. All these factors together strongly suggest a botnet attack.\n\n4. Specific Recommendations:\nGiven the severity of this threat, immediate action is required. Here are my recommendations:\n\n   - Isolate affected systems: To prevent the spread of the botnet, isolate the affected systems from the rest of the network.\n   \n   - Increase monitoring: Increase network monitoring to identify any additional unusual activity or potential threats.\n   \n   - Update security measures: Update firewall rules to block traffic from the non-standard port (0) and consider implementing rate limiting to manage the high packet rate.\n   \n   - Scan for malware: Use a reputable security solution to scan all systems for malware and remove any found.\n   \n   - Patch and update: Ensure all systems are patched and updated to the latest versions to minimize vulnerabilities.\n   \n   - User education: Educate users about the risks of botnets and how to avoid them, such as not clicking on suspicious links or downloading untrusted software.\n   \n   - Incident response: Engage your incident response team to investigate the attack, identify the source, and take steps to prevent a recurrence.",
+      "metrics": {
+        "is_malicious": true,
+        "confidence": 105,
+        "attack_type": "botnet",
+        "severity": "HIGH",
+        "indicators": [
+          "High packet rate: 2000000.00 pkts/s",
+          "Non-standard port: 0",
+          "Unusual timing pattern: mean=1.00, std=0.00",
+          "Unusual packet size: min=0.0, max=0.0"
+        ],
+        "threat_level": 9
+      },
+      "timestamp": "20250331_091822"
+    },
+    {
+      "sample_index": 0,
+      "analysis": "1. Attack Classification:\nThe attack type has been identified as a port scan. Port scanning is a technique used by attackers to find exploitable communication channels (ports) on a network device. This can be a prelude to more serious attacks as it helps the attacker identify open ports running services that can be exploited.\n\n2. Threat Analysis:\nThe threat level is extremely high (9/10), and the malicious confidence is at 100%, indicating that this is a confirmed attack rather than a false positive. The severity level is also high, suggesting that the potential damage or disruption caused by this attack could be significant. The unusual flow duration and the use of a non-standard port (60520) are concerning as they suggest the attacker is trying to evade detection by behaving in an atypical manner.\n\n3. Network Behavior Analysis:\nThe ACK flag count of 1.0 suggests that the attacker is using a stealthy scanning technique, probably TCP ACK scan. This type of scan can be used to map out firewall rulesets without alerting the target about the scan. The unusual packet size (min=0.0, max=0.0) is another indicator of suspicious behavior, which may suggest the attacker is trying to avoid detection or is attempting to exploit a specific vulnerability.\n\n4. Specific Recommendations:\nGiven the high threat level and severity, immediate action is required. Here are some recommendations:\n\n   - Isolate the affected network segment to prevent the potential spread of an attack.\n   - Implement stricter firewall rules to block non-standard ports and monitor the network for any attempts to communicate using these ports.\n   - Increase the logging level of your intrusion detection/prevention systems to capture more details about the suspicious traffic.\n   - Conduct a vulnerability assessment of the devices on your network to identify any potential weaknesses that could be exploited.\n   - Consider implementing a more robust intrusion detection system that can better identify and respond to stealthy scanning techniques.\n   - Regularly update and patch all systems to protect against known vulnerabilities.\n   - Finally, it's crucial to educate staff about the importance of cybersecurity and how to identify potential threats.",
+      "metrics": {
+        "is_malicious": true,
+        "confidence": 100,
+        "attack_type": "port_scan",
+        "severity": "HIGH",
+        "indicators": [
+          "ACK flag count: 1.0",
+          "Non-standard port: 60520",
+          "Unusual packet size: min=0.0, max=0.0",
+          "Unusual flow duration: 49731.00"
+        ],
+        "threat_level": 9
+      },
+      "timestamp": "20250331_091839"
+    },
+    {
+      "sample_index": 0,
+      "analysis": "1. Attack Classification:\nGiven the high malicious confidence of 75%, the high severity level, and the high threat level of 9/10, it is highly likely that the network is experiencing some form of attack. The SYN flag count of 1.0 is a strong indicator of a SYN flood attack, which is a type of Denial of Service (DoS) attack. The unusual packet size and flow duration also suggest abnormal network behavior, which further supports the likelihood of an attack.\n\n2. Threat Analysis:\nA SYN flood attack is a serious threat to network security. It works by overwhelming the target with SYN (synchronize) messages. In this case, the attacker sends a large number of SYN requests but does not respond to the SYN-ACK (synchronize-acknowledge) messages, causing the server to use up its resources waiting for responses that never come. This can lead to a denial of service, where legitimate users are unable to access the network or its services.\n\n3. Network Behavior Analysis:\nThe unusual packet size and flow duration are key indicators of suspicious network behavior. The minimum packet size of 0.0 and maximum of 30.0 are significantly different from the typical packet size, suggesting that the packets are being manipulated to carry out the attack. The unusual flow duration of 54838.00 also indicates abnormal network behavior, as it suggests that the network is being flooded with SYN requests over an extended period of time.\n\n4. Specific Recommendations:\nTo mitigate this type of attack, I would recommend implementing the following measures:\n\n   - Use a firewall or intrusion detection system (IDS) to detect and block SYN flood attacks. These systems can be configured to identify the characteristics of a SYN flood attack, such as a high number of SYN requests from a single source or unusual packet sizes.\n   \n   - Implement rate limiting. This involves limiting the number of SYN requests that can be made from a single source within a certain period of time.\n   \n   - Use SYN cookies. This technique involves the server sending back a SYN-ACK response with a \"cookie\" (a specially crafted sequence number) instead of using a buffer to remember the SYN request. This way, the server only needs to use resources when it receives a valid ACK response.\n   \n   - Regularly monitor network traffic to identify any unusual patterns or behavior. This can help to detect potential attacks early and take appropriate action.",
+      "metrics": {
+        "is_malicious": true,
+        "confidence": 75,
+        "attack_type": null,
+        "severity": "HIGH",
+        "indicators": [
+          "SYN flag count: 1.0",
+          "Unusual packet size: min=0.0, max=30.0",
+          "Unusual flow duration: 54838.00"
+        ],
+        "threat_level": 9
+      },
+      "timestamp": "20250331_091901"
+    },
+    {
+      "sample_index": 0,
+      "analysis": "1. Attack Classification:\nThe attack type is classified as a botnet. Botnets are networks of infected computers, controlled as a group without the owners' knowledge, usually for malicious purposes. The unusually high packet rate, non-standard port usage, and unusual timing and packet size patterns are all indicative of botnet activity.\n\n2. Threat Analysis:\nThe threat level is extremely high (9/10) and the malicious confidence is over 100%, indicating that this is almost certainly a malicious attack. The severity level is also high, suggesting that the potential damage or disruption caused by this attack could be significant. The botnet could be used for a variety of malicious activities, including DDoS attacks, data theft, or spreading malware.\n\n3. Network Behavior Analysis:\nThe high packet rate (111111.11 pkts/s) is a clear indication of abnormal network behavior, likely due to the botnet flooding the network with traffic. This could be part of a DDoS attack or an attempt to overwhelm network defenses. The use of a non-standard port (0) is also suspicious, as attackers often use non-standard ports to evade detection. The unusual timing pattern (mean=18.00, std=0.00) and packet size (min=0.0, max=0.0) suggest that the botnet traffic is being carefully controlled or manipulated, possibly to avoid detection or to maximize the impact of the attack.\n\n4. Specific Recommendations:\nImmediate action should be taken to mitigate this attack. This includes isolating affected systems to prevent the botnet from spreading or causing further damage. Network traffic should be closely monitored to identify any other potential signs of malicious activity. It may also be necessary to increase network defenses, such as firewalls and intrusion detection systems, to better protect against botnet attacks in the future. Furthermore, a thorough investigation should be conducted to determine how the botnet was able to infiltrate the network and steps should be taken to address any identified vulnerabilities. Lastly, consider engaging with a professional cybersecurity firm to assist in the removal of the botnet and to ensure all threats have been neutralized.",
+      "metrics": {
+        "is_malicious": true,
+        "confidence": 105,
+        "attack_type": "botnet",
+        "severity": "HIGH",
+        "indicators": [
+          "High packet rate: 111111.11 pkts/s",
+          "Non-standard port: 0",
+          "Unusual timing pattern: mean=18.00, std=0.00",
+          "Unusual packet size: min=0.0, max=0.0"
+        ],
+        "threat_level": 9
+      },
+      "timestamp": "20250331_091917"
+    }
+  ]
+}

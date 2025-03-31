@@ -1,0 +1,87 @@
+{
+  "results": [
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "port_scan",
+      "severity": "HIGH",
+      "threat_level": 5,
+      "key_indicators": [
+        "5. key indicators that led to this conclusion",
+        "the high ack and fin flags are the main indicators that led to this conclusion. these flags are often used in tcp fin scans, which are a type of stealth port scan. the purpose of such scans is to probe a network for open ports without establishing a full tcp connection, which can make them harder to detect."
+      ]
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 10,
+      "key_indicators": [
+        ""
+      ]
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    }
+  ],
+  "attack_types": {},
+  "severity_distribution": {
+    "LOW": 0,
+    "MEDIUM": 0,
+    "HIGH": 0
+  },
+  "threat_levels": {},
+  "suspicious_patterns": {}
+}

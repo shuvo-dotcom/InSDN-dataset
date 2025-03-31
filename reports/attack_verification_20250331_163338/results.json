@@ -1,0 +1,1144 @@
+{
+  "results": [
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.45",
+        "Score: 0.95",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.41",
+        "Score: 0.91",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.46",
+        "Score: 0.96",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.43",
+        "Score: 0.93",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "MEDIUM",
+      "threat_level": 7,
+      "key_indicators": [
+        "GAN confidence: 0.26",
+        "Score: 0.76",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.44",
+        "Score: 0.94",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.47",
+        "Score: 0.97",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 8,
+      "key_indicators": [
+        "GAN confidence: 0.40",
+        "Score: 0.90",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.44",
+        "Score: 0.94",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "MEDIUM",
+      "threat_level": 7,
+      "key_indicators": [
+        "GAN confidence: 0.25",
+        "Score: 0.75",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.43",
+        "Score: 0.93",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 8,
+      "key_indicators": [
+        "GAN confidence: 0.39",
+        "Score: 0.89",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.43",
+        "Score: 0.93",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.44",
+        "Score: 0.94",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 8,
+      "key_indicators": [
+        "GAN confidence: 0.33",
+        "Score: 0.83",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 8,
+      "key_indicators": [
+        "GAN confidence: 0.38",
+        "Score: 0.88",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.42",
+        "Score: 0.92",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.44",
+        "Score: 0.94",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.44",
+        "Score: 0.94",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.42",
+        "Score: 0.92",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.43",
+        "Score: 0.93",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.41",
+        "Score: 0.91",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 8,
+      "key_indicators": [
+        "GAN confidence: 0.37",
+        "Score: 0.87",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.46",
+        "Score: 0.96",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 8,
+      "key_indicators": [
+        "GAN confidence: 0.39",
+        "Score: 0.89",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.42",
+        "Score: 0.92",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.44",
+        "Score: 0.94",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.44",
+        "Score: 0.94",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.47",
+        "Score: 0.97",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 8,
+      "key_indicators": [
+        "GAN confidence: 0.40",
+        "Score: 0.90",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.45",
+        "Score: 0.95",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.44",
+        "Score: 0.94",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 8,
+      "key_indicators": [
+        "GAN confidence: 0.40",
+        "Score: 0.90",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.41",
+        "Score: 0.91",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 8,
+      "key_indicators": [
+        "GAN confidence: 0.39",
+        "Score: 0.89",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 8,
+      "key_indicators": [
+        "GAN confidence: 0.37",
+        "Score: 0.87",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 8,
+      "key_indicators": [
+        "GAN confidence: 0.40",
+        "Score: 0.90",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.44",
+        "Score: 0.94",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.44",
+        "Score: 0.94",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 8,
+      "key_indicators": [
+        "GAN confidence: 0.37",
+        "Score: 0.87",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.43",
+        "Score: 0.93",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.45",
+        "Score: 0.95",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 8,
+      "key_indicators": [
+        "GAN confidence: 0.38",
+        "Score: 0.88",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.43",
+        "Score: 0.93",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.44",
+        "Score: 0.94",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 8,
+      "key_indicators": [
+        "GAN confidence: 0.38",
+        "Score: 0.88",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.44",
+        "Score: 0.94",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.43",
+        "Score: 0.93",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.46",
+        "Score: 0.96",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 8,
+      "key_indicators": [
+        "GAN confidence: 0.40",
+        "Score: 0.90",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.43",
+        "Score: 0.93",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 8,
+      "key_indicators": [
+        "GAN confidence: 0.36",
+        "Score: 0.86",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.45",
+        "Score: 0.95",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.45",
+        "Score: 0.95",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.43",
+        "Score: 0.93",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.45",
+        "Score: 0.95",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 8,
+      "key_indicators": [
+        "GAN confidence: 0.39",
+        "Score: 0.89",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 8,
+      "key_indicators": [
+        "GAN confidence: 0.39",
+        "Score: 0.89",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.43",
+        "Score: 0.93",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.47",
+        "Score: 0.97",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.43",
+        "Score: 0.93",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.46",
+        "Score: 0.96",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.46",
+        "Score: 0.96",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "MEDIUM",
+      "threat_level": 7,
+      "key_indicators": [
+        "GAN confidence: 0.30",
+        "Score: 0.80",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.44",
+        "Score: 0.94",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.43",
+        "Score: 0.93",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 8,
+      "key_indicators": [
+        "GAN confidence: 0.37",
+        "Score: 0.87",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.40",
+        "Score: 0.90",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.44",
+        "Score: 0.94",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 8,
+      "key_indicators": [
+        "GAN confidence: 0.40",
+        "Score: 0.90",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.43",
+        "Score: 0.93",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.46",
+        "Score: 0.96",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.41",
+        "Score: 0.91",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 8,
+      "key_indicators": [
+        "GAN confidence: 0.36",
+        "Score: 0.86",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.44",
+        "Score: 0.94",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.41",
+        "Score: 0.91",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.45",
+        "Score: 0.95",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.45",
+        "Score: 0.95",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.40",
+        "Score: 0.90",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.41",
+        "Score: 0.91",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.43",
+        "Score: 0.93",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 8,
+      "key_indicators": [
+        "GAN confidence: 0.37",
+        "Score: 0.87",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.45",
+        "Score: 0.95",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.45",
+        "Score: 0.95",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.43",
+        "Score: 0.93",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.46",
+        "Score: 0.96",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.43",
+        "Score: 0.93",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 10,
+      "key_indicators": [
+        "5. key indicators that led to this conclusion"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.46",
+        "Score: 0.96",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "MEDIUM",
+      "threat_level": 7,
+      "key_indicators": [
+        "GAN confidence: 0.28",
+        "Score: 0.78",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.43",
+        "Score: 0.93",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.46",
+        "Score: 0.96",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.43",
+        "Score: 0.93",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.43",
+        "Score: 0.93",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.45",
+        "Score: 0.95",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 8,
+      "key_indicators": [
+        "GAN confidence: 0.39",
+        "Score: 0.89",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.40",
+        "Score: 0.90",
+        "Attack type: normal"
+      ]
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "normal",
+      "severity": "HIGH",
+      "threat_level": 9,
+      "key_indicators": [
+        "GAN confidence: 0.46",
+        "Score: 0.96",
+        "Attack type: normal"
+      ]
+    }
+  ],
+  "attack_types": {
+    "normal": 97
+  },
+  "severity_distribution": {
+    "LOW": 0,
+    "MEDIUM": 4,
+    "HIGH": 93
+  },
+  "threat_levels": {
+    "9": 70,
+    "7": 4,
+    "8": 23
+  },
+  "suspicious_patterns": {
+    "GAN confidence: 0.45": 11,
+    "Score: 0.95": 11,
+    "Attack type: normal": 97,
+    "GAN confidence: 0.41": 6,
+    "Score: 0.91": 6,
+    "GAN confidence: 0.46": 10,
+    "Score: 0.96": 10,
+    "GAN confidence: 0.43": 19,
+    "Score: 0.93": 19,
+    "GAN confidence: 0.26": 1,
+    "Score: 0.76": 1,
+    "GAN confidence: 0.44": 15,
+    "Score: 0.94": 15,
+    "GAN confidence: 0.47": 3,
+    "Score: 0.97": 3,
+    "GAN confidence: 0.40": 9,
+    "Score: 0.90": 9,
+    "GAN confidence: 0.25": 1,
+    "Score: 0.75": 1,
+    "GAN confidence: 0.39": 6,
+    "Score: 0.89": 6,
+    "GAN confidence: 0.33": 1,
+    "Score: 0.83": 1,
+    "GAN confidence: 0.38": 3,
+    "Score: 0.88": 3,
+    "GAN confidence: 0.42": 3,
+    "Score: 0.92": 3,
+    "GAN confidence: 0.37": 5,
+    "Score: 0.87": 5,
+    "GAN confidence: 0.36": 2,
+    "Score: 0.86": 2,
+    "GAN confidence: 0.30": 1,
+    "Score: 0.80": 1,
+    "GAN confidence: 0.28": 1,
+    "Score: 0.78": 1
+  }
+}

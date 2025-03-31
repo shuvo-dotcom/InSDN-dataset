@@ -1,0 +1,32 @@
+{
+  "timestamp": "20250331_090927",
+  "attack_summary": {
+    "total_samples": 10,
+    "malicious_samples": 10,
+    "attack_types": {
+      "botnet": 7,
+      "port_scan": 1
+    },
+    "severity_levels": {
+      "LOW": 0,
+      "MEDIUM": 2,
+      "HIGH": 8
+    },
+    "threat_levels": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 2,
+      "8": 0,
+      "9": 8,
+      "10": 0
+    },
+    "suspicious_patterns": {},
+    "attack_vectors": {},
+    "malicious_percentage": 100.0
+  },
+  "detailed_results": []
+}

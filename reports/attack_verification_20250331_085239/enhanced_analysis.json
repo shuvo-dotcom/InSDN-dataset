@@ -1,0 +1,945 @@
+{
+  "timestamp": "20250331_085822",
+  "original_summary": {
+    "timestamp": "20250331_085239",
+    "attack_summary": {
+      "total_samples": 10,
+      "malicious_samples": 1,
+      "attack_types": {
+        "ddos": 2,
+        "botnet": 2,
+        "port scan": 1,
+        "reconnaissance": 3
+      },
+      "severity_levels": {
+        "LOW": 0,
+        "MEDIUM": 0,
+        "HIGH": 0
+      },
+      "threat_levels": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0
+      },
+      "suspicious_patterns": {
+        "(1147) is suspicious, as common services usually run on well-known ports.": 1,
+        "(40849) is not typical for regular web traffic, suggesting scanning or evasion.": 1,
+        "originating from standard service ports.": 1,
+        "that should not be publicly accessible.": 1,
+        "that could be associated with automated scanning tools.": 1
+      },
+      "attack_vectors": {
+        "** utilization of automated scanning tools to discover open ports and services for future exploitation.": 1
+      },
+      "malicious_percentage": 10.0
+    },
+    "detailed_results": [
+      {
+        "sample_index": 0,
+        "analysis": "### 1. Attack Classification\n\n- **Confidence Level**: 75%\n- **Type of Attack or Normal Traffic**: This pattern suggests a potential DNS amplification attack.\n- **Key Indicators**:\n  - **Protocol and Ports**: The use of Protocol 17 (UDP) and Destination Port 53 (DNS) is typical for DNS queries but can be exploited for DNS amplification attacks.\n  - **Packet Size Ratio**: The significant difference in the size of forward (43 bytes) and backward packets (mean of 193.67 bytes, max 400 bytes) indicates an amplification characteristic, where a small query triggers a larger response.\n  - **Total Forward vs. Backward Packets**: The ratio of 1 forward packet to 3 backward packets further supports the amplification behavior.\n  - **Bytes/s and Packets/s**: High rates of 134977.2875 Bytes/s and 865.2390222999999 Packets/s are unusual for regular DNS traffic, suggesting an attempt to flood the target.\n- **Comparison Against Known Attack Patterns**: The observed behavior aligns with DNS amplification attacks, where attackers exploit publicly accessible DNS servers to flood a target with DNS response traffic.\n\n### 2. Threat Analysis\n\n- **Potential Security Implications**: This can lead to DDoS attacks, overwhelming network resources, and causing service disruptions.\n- **Estimated Severity Level**: High\n- **Possible Attack Vectors**: Exploitation of misconfigured DNS servers to amplify traffic towards a target.\n- **Threat Level**: 8/10. The high volume of traffic and potential to disrupt services make this a severe threat.\n- **Immediate and Potential Future Impacts**: Immediate impacts include network congestion and service degradation. Long-term, this could lead to repeated attacks if not addressed.\n\n### 3. Network Behavior Analysis\n\n- **Suspicious Patterns**:\n  - **Packet Flow Characteristics**: The high forward/backward ratio and the significant difference in packet sizes are atypical for normal DNS queries and responses.\n  - **Timing Patterns**: The mean inter-arrival times (Flow IAT Mean of 1541.0) and the standard deviation suggest a patterned flow, not typical of regular DNS traffic which should be more sporadic.\n  - **Flag Usage**: The absence of flag information in this dataset limits analysis, but typically, DNS amplification attacks may not rely on specific flag manipulations.\n  - **Protocol Behavior**: The use of UDP protocol and port 53 is standard for DNS but is exploited here for malicious purposes.\n- **Comparison to Normal Traffic Patterns**: Normal DNS queries would not typically show such a high volume of bytes per second, a skewed packet size ratio, or a consistent pattern of large backward packets.\n\n### 4. Recommendations\n\n- **Security Measures**:\n  - Implement rate limiting on DNS responses.\n  - Configure DNS servers to not respond to queries from unauthorized networks (Response Rate Limiting).\n  - Employ network behavior analysis tools to detect and mitigate unusual traffic patterns.\n- **Monitoring or Detection Rules**:\n  - Alert on high rates of DNS response traffic, especially with large response sizes.\n  - Monitor for unusual ratios of forward to backward packets in DNS traffic.\n- **Immediate Actions**:\n  - Temporarily block IPs identified as sources of suspicious DNS queries.\n  - Increase scrutiny on outbound DNS traffic to identify potential sources of amplification.\n- **Firewall Rules or IDS Signatures**:\n  - Block UDP traffic on port 53 from untrusted sources.\n  - IDS signature for detecting DNS queries with potential for amplification (e.g., queries for ANY or with specific flags set).\n- **Preventive and Detective Controls**:\n  - Regularly audit DNS server configurations to ensure they are not susceptible to being used in amplification attacks.\n  - Implement anomaly-based detection to identify deviations from baseline DNS traffic patterns.\n\nThis analysis, based on the provided metrics, suggests a high likelihood of DNS amplification attack behavior, necessitating immediate and long-term security measures to mitigate potential damage.",
+        "metrics": {
+          "malicious_confidence": null,
+          "severity_level": null,
+          "attack_type": "ddos",
+          "threat_level": null,
+          "key_indicators": [],
+          "recommendations": [
+            "- **security measures**:",
+            "to mitigate potential damage."
+          ],
+          "attack_vectors": [],
+          "suspicious_patterns": []
+        },
+        "timestamp": "20250331_085307"
+      },
+      {
+        "sample_index": 1,
+        "analysis": "### 1. Attack Classification\n\n- **Confidence Level**: Given the data, the confidence level that this traffic sample is malicious is approximately 80%. The pattern suggests a potential Denial of Service (DoS) attack, specifically a flood attack.\n- **Type of Attack**: The characteristics align with a DoS attack pattern, particularly a flood attack designed to overwhelm a target's resources.\n- **Key Indicators**:\n  - **Packets/s**: The rate of 1,000,000 packets per second is abnormally high for regular traffic, suggesting an attempt to flood the network.\n  - **Total Forward/Backward Packets**: With 0 forward packets and 2 backward packets, the lack of forward traffic is unusual, indicating that the attack might be one-sided, aiming to consume the target's resources without establishing a legitimate connection.\n  - **Flow Duration**: A very short duration (2 seconds) with such a high packet rate is indicative of a burst attack designed to quickly overwhelm.\n- **Comparison to Known Attack Patterns**: This pattern closely matches known flood attack patterns where the attacker sends a high volume of packets in a short period to exhaust the target's processing capabilities.\n\n### 2. Threat Analysis\n\n- **Security Implications**: The primary implication is the potential for service disruption, leading to denial of service for legitimate users.\n- **Severity Level**: High. The ability to send packets at such a high rate indicates a significant threat capable of overwhelming many types of infrastructure.\n- **Possible Attack Vectors**: The vector appears to be a direct flood to the target, possibly leveraging compromised machines or a botnet to generate the high packet rate.\n- **Threat Level**: 8/10. The sheer volume of packets per second poses a serious risk to network stability and availability.\n- **Immediate and Potential Future Impacts**: Immediate impacts include service disruption and potential system crashes. Future impacts could involve repeated attacks leading to prolonged service unavailability and erosion of trust.\n\n### 3. Network Behavior Analysis\n\n- **Suspicious Patterns**:\n  - **Packet Flow Characteristics**: The packets per second rate is extremely unusual and not characteristic of normal web, database, or application traffic.\n  - **Timing Patterns**: The mean inter-arrival time (IAT) of 2 seconds with a standard deviation of 0 indicates a highly regular and unnatural pattern, unlike typical human or application-generated traffic.\n  - **Flag Usage**: The absence of any flag indicators (SYN, ACK, etc.) in the provided data is atypical, as legitimate connections usually involve several flag exchanges to establish and terminate sessions.\n  - **Protocol Behavior**: The protocol being 0.0 (potentially indicating an unknown or non-standard protocol) and both source and destination ports being 0 are highly irregular and suggest either corrupted data or potential evasion techniques.\n- **Comparison to Normal Traffic Patterns**: Normal traffic would typically show a mix of forward and backward packets, a variety of flag usage indicative of session establishment and termination, and identifiable protocols and port numbers.\n\n### 4. Recommendations\n\n- **Security Measures**:\n  - Implement rate limiting on incoming traffic to prevent a single source from overwhelming the network.\n  - Deploy anomaly-based intrusion detection systems (IDS) that can identify and mitigate unusual traffic patterns.\n- **Monitoring or Detection Rules**:\n  - Alert on sudden spikes in traffic volume that exceed a predefined threshold.\n  - Monitor for irregular packet sizes and flag usage patterns that deviate from established baselines.\n- **Immediate Actions**:\n  - If an attack is detected, immediately apply network-level blocks for the offending IPs if identifiable.\n  - Engage an incident response plan that includes communication with your ISP for potential upstream mitigation.\n- **Firewall Rules or IDS Signatures**:\n  - Create IDS signatures to detect abnormally high packets per second rates from a single source or to multiple destinations.\n  - Implement firewall rules to drop packets that do not conform to expected protocols, flag combinations, or port usage patterns.\n\nThe recommendations focus on both preventive measures to reduce the risk of successful attacks and detective controls to quickly identify and mitigate ongoing attacks.",
+        "metrics": {
+          "malicious_confidence": null,
+          "severity_level": null,
+          "attack_type": "botnet",
+          "threat_level": null,
+          "key_indicators": [],
+          "recommendations": [
+            "- **security measures**:",
+            "focus on both preventive measures to reduce the risk of successful attacks and detective controls to quickly identify and mitigate ongoing attacks."
+          ],
+          "attack_vectors": [],
+          "suspicious_patterns": []
+        },
+        "timestamp": "20250331_085332"
+      },
+      {
+        "sample_index": 2,
+        "analysis": "### Attack Classification\n\n- **Likelihood of Malicious Traffic**: 90%\n- **Type of Attack Suggestion**: This pattern suggests a potential Denial of Service (DoS) attack, specifically a flood attack.\n- **Key Indicators**:\n  - **Packets/s**: The packets per second rate is extremely high (57142.85714), which is indicative of a flood attack aiming to overwhelm the target's resources.\n  - **Total Forward/Backward Packets**: The total forward packets are 0, and total backward packets are 2, indicating a one-sided traffic flow, which is unusual for normal traffic patterns.\n  - **Packet Length Stats**: All packet length statistics are 0, suggesting that the packets are either malformed or part of a scanning/flooding technique where the packet size is irrelevant.\n  - **Flag Analysis**: The absence of any flags (PSH, URG, SYN, RST, FIN, ACK) in the packets is abnormal, as typical network communications involve the use of these flags for establishing connections, data transmission, and connection teardown.\n- **Comparison Against Known Attack Patterns**: The high packets per second rate and the absence of forward packets are consistent with DoS attack patterns, where attackers aim to consume the target's bandwidth or processing capacity.\n\n### Threat Analysis\n\n- **Potential Security Implications**: A successful DoS attack could lead to service unavailability, affecting business operations and user experience.\n- **Estimated Severity Level**: High\n- **Possible Attack Vectors**: The attacker might be using a botnet or a script to generate a high volume of packets towards the target, aiming to exhaust network resources.\n- **Threat Level Rating**: 9/10. The high packets per second rate and the nature of the traffic suggest a significant threat capable of disrupting services.\n- **Immediate and Potential Future Impacts**: In the immediate term, this could lead to service degradation or complete unavailability. In the long term, repeated attacks could erode user trust and increase operational costs due to mitigation efforts.\n\n### Network Behavior Analysis\n\n- **Suspicious Patterns**:\n  - **Packet Flow Characteristics**: The extremely high packets per second rate without corresponding data flow is highly unusual and indicative of a flood attack.\n  - **Timing Patterns**: The flow inter-arrival time mean and standard deviation being 0 suggests a continuous, unidirectional flood of packets.\n  - **Flag Usage**: The complete absence of TCP flags in all packets is highly unusual, as normal TCP traffic involves the use of various flags for connection setup, management, and teardown.\n  - **Protocol Behavior**: The protocol, source port, and destination port being set to 0 is abnormal and suggests either a misconfiguration or an attempt to obfuscate the attack vector.\n- **Comparison to Normal Traffic**: Normal traffic patterns would show a mix of forward and backward packets, use of TCP/UDP flags as per protocol requirements, and non-zero packet sizes.\n\n### Recommendations\n\n- **Security Measures**:\n  - Implement rate limiting on incoming traffic to mitigate flood attacks.\n  - Deploy a Web Application Firewall (WAF) or Intrusion Detection System (IDS) with rules to detect and block high rates of empty packets.\n- **Monitoring or Detection Rules**:\n  - Alert on sudden spikes in packets per second rates with zero payload.\n  - Monitor for traffic with missing TCP/UDP flags, which is non-standard behavior.\n- **Immediate Actions**:\n  - If this pattern is detected, immediately block the offending IP addresses at the firewall level.\n  - Increase the scrutiny level on network traffic analysis tools to catch further anomalies.\n- **Firewall Rules or IDS Signatures**:\n  - Block IP addresses generating traffic with packets per second rates significantly higher than average.\n  - Create IDS signatures to detect and alert on traffic with zero-length packet sizes and no TCP/UDP flags.\n\nImplementing these measures and continuously monitoring network traffic for anomalies will help in mitigating the impact of such attacks and protecting the network infrastructure from potential threats.",
+        "metrics": {
+          "malicious_confidence": null,
+          "severity_level": null,
+          "attack_type": "botnet",
+          "threat_level": null,
+          "key_indicators": [],
+          "recommendations": [
+            "- **security measures**:"
+          ],
+          "attack_vectors": [],
+          "suspicious_patterns": []
+        },
+        "timestamp": "20250331_085401"
+      },
+      {
+        "sample_index": 3,
+        "analysis": "### 1. Attack Classification\n\n- **Confidence in Maliciousness**: 80%\n- **Type of Attack**: This traffic pattern suggests a potential SYN Flood attack.\n- **Key Indicators**:\n  - **SYN Flags**: The presence of 1 SYN flag with no corresponding ACK flags indicates an attempt to initiate a connection without completing the handshake, typical of SYN Flood attacks.\n  - **Packets/s**: The extremely high packet rate of 200,000 packets per second with a duration of only 10 seconds is indicative of a flood attack aimed at overwhelming the target's resources.\n  - **Forward/Backward Ratio**: A ratio of 0.0, with 0 forward packets and 2 backward packets, suggests an asymmetry typical of attack traffic where the attacker sends initial packets but does not engage in a legitimate connection.\n- **Comparison to Known Attack Patterns**: SYN Flood attacks are characterized by high rates of SYN packets aimed at exhausting server resources, aligning with the observed packet rates and flag usage in this sample.\n\n### 2. Threat Analysis\n\n- **Security Implications**: The target system could experience denial of service, where legitimate users are unable to establish connections due to resource exhaustion.\n- **Estimated Severity Level**: High\n- **Possible Attack Vectors**: The attacker is likely exploiting the TCP handshake process by not completing it, thus occupying server resources without establishing a real session.\n- **Threat Level**: 8/10. The high packet rate and misuse of the TCP protocol indicate a significant threat capable of causing service disruption.\n- **Immediate and Potential Future Impacts**: Immediate impacts include service degradation or denial. Future impacts could involve repeated attacks leading to prolonged downtime or exploitation of the weakened state for further attacks.\n\n### 3. Network Behavior Analysis\n\n- **Suspicious Patterns**:\n  - **Packet Flow Characteristics**: The packet rate is abnormally high for legitimate traffic, especially with a zero-byte transfer, indicating an attack rather than normal usage.\n  - **Timing Patterns**: A flow IAT (Inter-Arrival Time) mean and standard deviation of 10 and 0, respectively, alongside a total duration of 10 seconds, suggests a short, intense burst of traffic, atypical of normal user behavior.\n  - **Flag Usage**: The use of only SYN flags without ACK flags in the context of the observed traffic rates is a strong indicator of SYN Flood attack.\n  - **Protocol Behavior**: The use of a non-standard destination port (1517) could indicate an attempt to exploit specific services or applications running on non-standard ports.\n- **Comparison to Normal Traffic Patterns**: Normal traffic would typically show a mix of SYN, ACK, and other TCP flags indicating the establishment and use of connections, along with more varied packet sizes and inter-arrival times.\n\n### 4. Recommendations\n\n- **Security Measures**:\n  - Implement rate limiting to cap the number of SYN packets allowed per second from a single source.\n  - Deploy SYN cookies to differentiate between legitimate and malicious SYN packets.\n- **Monitoring or Detection Rules**:\n  - Alert on sudden spikes in SYN packets without corresponding ACKs.\n  - Monitor for unusual traffic patterns to non-standard ports.\n- **Immediate Actions**:\n  - Temporarily block IPs showing suspicious SYN-only traffic patterns.\n  - Increase the capacity of resources to handle unexpected surges in traffic.\n- **Firewall Rules or IDS Signatures**:\n  - Block incoming traffic with suspicious characteristics, such as high rates of SYN packets from a single source or to a specific port, without corresponding ACK packets.\n  - IDS signature for SYN Flood: Alert on a threshold breach of SYN packets per second from a single source or to a single destination.\n- **Preventive and Detective Controls**:\n  - Implement TCP handshake verification mechanisms.\n  - Regularly update and patch systems to mitigate vulnerabilities on non-standard ports.\n\nThis analysis, based on the provided metrics, strongly suggests a SYN Flood attack, necessitating immediate and strategic responses to mitigate potential damage and prevent future incidents.",
+        "metrics": {
+          "malicious_confidence": null,
+          "severity_level": null,
+          "attack_type": null,
+          "threat_level": null,
+          "key_indicators": [],
+          "recommendations": [
+            "- **security measures**:"
+          ],
+          "attack_vectors": [],
+          "suspicious_patterns": []
+        },
+        "timestamp": "20250331_085433"
+      },
+      {
+        "sample_index": 4,
+        "analysis": "### 1. Attack Classification\n\n- **Confidence Level**: 80%\n- **Type of Attack or Normal Traffic**: This pattern suggests a potential DNS amplification attack.\n- **Key Indicators**:\n  - **Protocol and Ports**: The use of protocol 17 (UDP) and destination port 53, which is reserved for DNS, is typical for DNS queries. However, the suspicious aspect is the volume and pattern of the traffic.\n  - **Packet Size Ratio**: The significant difference in packet size between forward (34 bytes) and backward packets (up to 334 bytes) suggests an amplification factor, which is a hallmark of DNS amplification attacks.\n  - **Total Forward and Backward Packets**: The ratio of 1 forward packet to 3 backward packets with larger sizes is indicative of an amplification attack where a small query generates a larger response.\n  - **Bytes/s and Packets/s**: High rates of 200887.9023 bytes/s and 1109.877913 packets/s are unusual for normal DNS traffic, suggesting an attack aimed at overwhelming the target with high volumes of traffic.\n\n- **Comparison with Known Attack Patterns**: The observed pattern of high bytes per second, high packet per second rate, and a significant difference in packet sizes between forward and backward traffic aligns with known DNS amplification attack patterns.\n\n### 2. Threat Analysis\n\n- **Potential Security Implications**: This could lead to DDoS attacks, causing denial of service to legitimate users, resource exhaustion, and potential service disruptions.\n- **Estimated Severity Level**: High\n- **Possible Attack Vectors**: The attacker is likely exploiting publicly accessible DNS servers to flood a target with DNS response traffic.\n- **Threat Level**: 9/10. The high volume of traffic and the use of amplification techniques can cause significant disruption and are difficult to mitigate without proper filtering and rate limiting in place.\n- **Immediate and Potential Future Impacts**: Immediate impacts include service disruption and potential infrastructure overload. Future impacts could involve repeated attacks if the attacker identifies the target as vulnerable and without adequate protection.\n\n### 3. Network Behavior Analysis\n\n- **Packet Flow Characteristics**: The high forward/backward ratio and the significant difference in packet sizes are unusual. Normal DNS queries and responses do not typically exhibit such a large discrepancy in packet sizes and counts.\n- **Timing Patterns**: The mean inter-arrival times (Flow IAT Mean) and the standard deviation suggest irregular intervals, which could indicate bursts of traffic typical in amplification attacks.\n- **Flag Usage**: The absence of TCP flags is expected in UDP traffic, but in the context of DNS, the lack of any flags in the packet analysis (e.g., PSH, URG) is not directly relevant. However, the lack of any anomalies in flag usage does not negate the other indicators of malicious activity.\n- **Protocol Behavior**: The use of UDP protocol 17 for DNS is standard, but the pattern of traffic is not. The high volume and amplification factor are key concerns.\n\n### 4. Recommendations\n\n- **Security Measures**:\n  - Implement rate limiting for DNS responses to prevent amplification.\n  - Configure DNS servers to not respond to non-local requests (if they are not intended to be public DNS servers).\n  - Employ network behavioral analysis tools to detect and mitigate unusual traffic patterns.\n- **Monitoring or Detection Rules**:\n  - Alert on unusual spikes in DNS response sizes or counts.\n  - Monitor for disproportionate ratios of incoming to outgoing DNS packet sizes.\n- **Immediate Actions**:\n  - Temporarily block traffic from sources identified as part of the attack.\n  - Implement ACLs (Access Control Lists) to restrict DNS traffic only to known sources, if feasible.\n- **Firewall Rules or IDS Signatures**:\n  - IDS signature for detecting DNS responses that are significantly larger than the requests.\n  - Firewall rules to block UDP traffic on port 53 from unknown or suspicious IP addresses.\n\nBy focusing on these specific metrics and indicators, organizations can better prepare for and respond to potential DNS amplification attacks, minimizing their impact and improving overall network security posture.",
+        "metrics": {
+          "malicious_confidence": null,
+          "severity_level": null,
+          "attack_type": "ddos",
+          "threat_level": null,
+          "key_indicators": [],
+          "recommendations": [
+            "- **security measures**:"
+          ],
+          "attack_vectors": [],
+          "suspicious_patterns": []
+        },
+        "timestamp": "20250331_085516"
+      },
+      {
+        "sample_index": 5,
+        "analysis": "### 1. Attack Classification\n\n#### Likelihood of Malicious Traffic: 75%\n- **Type of Attack Suggestion**: The pattern suggests a potential scanning or reconnaissance attack, possibly a SYN scan.\n- **Key Indicators**:\n  - **SYN Flag Count**: There is 1 SYN flag without corresponding ACK flags, which is indicative of a SYN scan used for port scanning.\n  - **Forward to Backward Packet Ratio**: The ratio of 2.0 forward packets to 5.0 backward packets is unusual, suggesting an attempt to establish a connection but not following through with a typical handshake or data transfer.\n  - **Protocol**: The use of protocol 6 (TCP) with a destination port of 80 (HTTP) is common for web traffic, but in the context of the other indicators, it may suggest an attempt to probe web servers.\n- **Comparison to Known Attack Patterns**: SYN scans are characterized by sending SYN packets to different ports on a target machine, looking for responses that indicate open ports. The lack of ACK flags and the presence of a single SYN flag align with this pattern.\n\n### 2. Threat Analysis\n\n- **Potential Security Implications**: An attacker could be mapping out the network to identify open ports as targets for future attacks, such as web application attacks or establishing footholds.\n- **Estimated Severity Level**: Medium\n- **Possible Attack Vectors**: The attacker is likely using automated tools to perform a SYN scan against the target server to discover open ports.\n- **Threat Level Rating**: 6/10\n  - **Justification**: While reconnaissance itself does not directly harm the system, it is a critical precursor to more severe attacks. The presence of such traffic indicates a potential threat actor's interest in the network.\n- **Immediate and Potential Future Impacts**: Immediate impacts are minimal beyond potential performance degradation. However, the information gathered could lead to targeted attacks, exploiting vulnerabilities on open ports or services.\n\n### 3. Network Behavior Analysis\n\n- **Suspicious Patterns**:\n  - **Packet Flow Characteristics**: The forward/backward packet ratio and the total number of packets sent in a short duration (3983.0 ms) with high bytes/s and packets/s rates are atypical for normal web traffic, suggesting scanning activity.\n  - **Timing Patterns**: The mean and standard deviation of flow inter-arrival times (Flow IAT Mean and Std) indicate irregular intervals, which can be associated with automated scanning tools.\n  - **Flag Usage**: The presence of a SYN flag without corresponding ACK flags in the context of this traffic is suspicious, as it suggests incomplete TCP connections typical of SYN scans.\n  - **Protocol Behavior**: The source port is high (38662), which is common for client-side connections, but when combined with the other indicators, it supports the scanning hypothesis.\n- **Comparison to Normal Traffic Patterns**: Normal traffic to port 80 would typically include complete TCP handshakes (SYN, SYN-ACK, ACK) and more balanced forward and backward packet ratios in the context of HTTP requests and responses.\n\n### 4. Recommendations\n\n- **Security Measures**:\n  - Implement network segmentation to limit the scanner's visibility into the network.\n  - Use intrusion detection systems (IDS) to detect and alert on scanning activities.\n- **Monitoring/Detection Rules**:\n  - Alert on SYN packets to common ports (e.g., 80, 443) without corresponding ACKs.\n  - Monitor for unusual ratios of forward to backward packets and high rates of packet transmission.\n- **Immediate Actions**:\n  - Temporarily block IPs identified as sources of scanning.\n  - Review firewall rules to ensure only necessary ports are open and accessible from the internet.\n- **Firewall Rules/IDS Signatures**:\n  - Block incoming connections with only SYN flags set from unknown or suspicious IPs.\n  - IDS signature for detecting SYN scans: alert tcp any any -> $HOME_NET 80 (flags: S; msg: \"Possible SYN Scan Detected\"; sid: 1000001;)\n- **Preventive and Detective Controls**:\n  - Regularly update and patch systems to mitigate vulnerabilities on open ports.\n  - Employ rate limiting to mitigate the impact of scanning and reconnaissance activities.\n\nBy focusing on these specific indicators and implementing the recommended measures, it's possible to reduce the risk and impact of reconnaissance activities and prepare for potential future attacks.",
+        "metrics": {
+          "malicious_confidence": null,
+          "severity_level": null,
+          "attack_type": "port scan",
+          "threat_level": null,
+          "key_indicators": [],
+          "recommendations": [
+            "- **security measures**:"
+          ],
+          "attack_vectors": [],
+          "suspicious_patterns": []
+        },
+        "timestamp": "20250331_085555"
+      },
+      {
+        "sample_index": 6,
+        "analysis": "Given the detailed network traffic sample provided, let's analyze it based on the requested criteria:\n\n### 1. Attack Classification\n\n- **Confidence Level**: Given the peculiarities in the data, I would estimate a 70-80% confidence level that this traffic sample could be indicative of malicious activity.\n- **Type of Attack or Normal Traffic**: The pattern suggests a potential **Denial of Service (DoS) attack**, specifically a **Ping of Death** or similar attack that exploits packet processing.\n- **Key Indicators**:\n  - **Packets/s**: The extremely high rate of 76923.07692 packets per second with a duration of only 26.0 seconds is abnormal and indicative of a flood attack.\n  - **Total Forward/Backward Packets**: The absence of forward packets and presence of only backward packets (2.0) without any payload (Total Length of Bwd Packets: 0.0) is suspicious.\n  - **Flow IAT Mean and Std**: Both are 26.0 and 0.0, respectively, indicating that all actions happened in a very short, uniform time frame, which is atypical for regular traffic.\n- **Comparison Against Known Attack Patterns**: The high packet rate with minimal or no payload is a common characteristic of DoS attacks, aiming to overwhelm a target's processing capabilities rather than to breach data integrity or confidentiality.\n\n### 2. Threat Analysis\n\n- **Potential Security Implications**: Such traffic could lead to service disruption, resource exhaustion, or act as a distraction for more stealthy infiltration attempts.\n- **Estimated Severity Level**: High. The potential disruption to services and the resources required to mitigate such an attack make it a significant threat.\n- **Possible Attack Vectors**: The vector appears to be a flood-based DoS attack, possibly leveraging malformed packets or exploiting specific protocol vulnerabilities.\n- **Threat Level**: 8/10. The immediate impact of service disruption and the potential for this to be a precursor to more sophisticated attacks justify the high rating.\n- **Immediate and Potential Future Impacts**: Immediate impacts include service downtime and resource exhaustion. Future impacts could involve repeated attacks or exploitation of weakened security postures.\n\n### 3. Network Behavior Analysis\n\n- **Suspicious Patterns**:\n  - **Packet Flow Characteristics**: The zero bytes/packet size with a high packets/s rate is highly unusual.\n  - **Timing Patterns**: The uniformity in flow inter-arrival times (IAT) with a mean and standard deviation that are identical is not typical of regular web or application traffic.\n  - **Flag Usage**: The absence of any flag counts (e.g., SYN, ACK) in the context of packets being sent is abnormal, suggesting either a non-standard protocol usage or potential evasion techniques.\n  - **Protocol Behavior**: The protocol being 0.0 and both source and destination ports as 0.0 is indicative of either corrupted data or an attempt to mask the true nature of the traffic.\n- **Comparison to Normal Traffic Patterns**: Normal traffic exhibits variability in packet sizes, intervals, and flag usage aligned with the protocol's expected behavior. This sample deviates significantly from those norms.\n\n### 4. Recommendations\n\n- **Security Measures**:\n  - Implement rate limiting and traffic shaping to mitigate flood-based attacks.\n  - Deploy anomaly-based detection systems that can identify deviations from baseline traffic patterns.\n- **Monitoring or Detection Rules**:\n  - Alert on sudden spikes in packet rates with minimal or no payload.\n  - Monitor for uniformity in packet inter-arrival times as potential indicators of automated attack tools.\n- **Immediate Actions**:\n  - If detected, immediately isolate the affected segments to prevent the spread or escalation of the attack.\n  - Analyze traffic sources and implement IP-based blocking if the attack sources are identifiable and consistent.\n- **Firewall Rules or IDS Signatures**:\n  - Block or rate limit packets that have no payload and are coming in at an abnormally high rate.\n  - Create signatures that detect the absence of standard protocol flags in conjunction with other suspicious characteristics (e.g., high packet rates, uniform IAT).\n\nIn conclusion, while the provided data lacks some specifics (e.g., actual payload sizes, complete flag details), the anomalies present strongly suggest malicious intent, likely a DoS attack. The recommendations focus on mitigating this immediate threat and enhancing detection capabilities to prevent future occurrences.",
+        "metrics": {
+          "malicious_confidence": 80,
+          "severity_level": null,
+          "attack_type": null,
+          "threat_level": null,
+          "key_indicators": [],
+          "recommendations": [
+            "- **security measures**:",
+            "focus on mitigating this immediate threat and enhancing detection capabilities to prevent future occurrences."
+          ],
+          "attack_vectors": [],
+          "suspicious_patterns": []
+        },
+        "timestamp": "20250331_085640"
+      },
+      {
+        "sample_index": 7,
+        "analysis": "### Attack Classification\n\n- **Confidence in Malicious Intent**: 80%\n- **Type of Attack Suggested**: This pattern suggests a possible SYN scan or reconnaissance activity.\n- **Key Indicators**:\n  - **SYN Flags**: The presence of a SYN flag without corresponding ACK flags is indicative of SYN scanning, used to identify open ports on a target machine.\n  - **Total Forward Packets**: 0, indicating no actual data was sent, which aligns with scanning activities where the attacker does not establish a full connection.\n  - **Total Backward Packets**: 2, possibly the responses from the scanned host.\n  - **Protocol**: 6 (TCP), which is commonly used for initial handshake attempts in reconnaissance activities.\n  - **Source and Destination Ports**: The use of a high source port number (40507) and a specific destination port (1147) could indicate scanning for services running on non-standard ports.\n\n### Threat Analysis\n\n- **Potential Security Implications**: Unauthorized reconnaissance and mapping of network services, leading to further targeted attacks.\n- **Estimated Severity Level**: Medium.\n- **Possible Attack Vectors**: Utilizing SYN scans to discover open ports and potentially vulnerable services.\n- **Threat Level**: 7/10. While the immediate impact might be low, the information gathered could be used for more severe attacks.\n- **Immediate and Future Impacts**: Immediate impact is low as no data is exchanged, but future impacts could include exploitation of discovered services.\n\n### Network Behavior Analysis\n\n- **Suspicious Patterns**:\n  - **Packet Flow Characteristics**: The absence of forward packets and the presence of backward packets without data transfer are unusual.\n  - **Timing Patterns**: The flow duration and backward IAT mean being equal suggests automated scanning with precise timing.\n  - **Flag Usage**: The SYN flag without an ACK flag in response is not typical for legitimate traffic.\n  - **Protocol Behavior**: Scanning on a non-standard port (1147) is suspicious, as common services usually run on well-known ports.\n- **Comparison to Normal Traffic**:\n  - Normal traffic typically involves a SYN, followed by a SYN-ACK, and then an ACK to establish a connection, which is not observed here.\n  - The packet sizes and lack of data transfer are not typical for legitimate TCP connections.\n\n### Recommendations\n\n- **Security Measures**:\n  - Implementing network segmentation to limit reconnaissance scope.\n  - Deploying Intrusion Detection Systems (IDS) to detect and alert on SYN scan signatures.\n- **Monitoring/Detection Rules**:\n  - Alert on TCP connections that only contain a SYN flag without progression to established connections.\n  - Monitor for high rates of SYN packets targeting multiple ports from a single source IP.\n- **Immediate Actions**:\n  - Temporarily block IPs identified in scanning activities at the firewall level.\n  - Investigate logs for other signs of reconnaissance or attempted breaches.\n- **Firewall Rules/IDS Signatures**:\n  - Block incoming connections with only a SYN flag set and no subsequent ACK.\n  - Create IDS signatures to detect rapid sequences of SYN packets to multiple ports, indicative of scanning.\n- **Preventive and Detective Controls**:\n  - Regularly update firewall and IDS signatures based on emerging threats.\n  - Conduct vulnerability assessments on ports found to be open to ensure services are secure.\n\nThis analysis is based on the provided metrics and patterns, which strongly suggest reconnaissance activity, possibly as a precursor to more targeted attacks. Implementing the recommended controls can help mitigate potential threats.",
+        "metrics": {
+          "malicious_confidence": null,
+          "severity_level": null,
+          "attack_type": "reconnaissance",
+          "threat_level": null,
+          "key_indicators": [],
+          "recommendations": [
+            "- **security measures**:"
+          ],
+          "attack_vectors": [],
+          "suspicious_patterns": [
+            "(1147) is suspicious, as common services usually run on well-known ports."
+          ]
+        },
+        "timestamp": "20250331_085703"
+      },
+      {
+        "sample_index": 8,
+        "analysis": "### Attack Classification\n\n**Likelihood of Malicious Traffic:** 60-70%\n\n**Type of Attack Suggestion:** The pattern suggests a potential reconnaissance or scanning activity, possibly a SYN scan.\n\n**Key Indicators:**\n- **SYN Flags:** The presence of SYN flags (1.0) without corresponding ACK flags indicates an attempt to establish a connection but not completing the handshake, which is characteristic of SYN scanning.\n- **Packet Size Distribution:** The minimal packet sizes (Min: 0.0, Max: 30.0, Mean: 6.666666667) are indicative of packets that are not carrying significant payloads, which aligns with scanning activities where the attacker is more interested in mapping the network rather than transferring data.\n- **Flow Duration and Packet Rates:** The relatively short flow duration (34973.0 ms) combined with a balanced forward and backward packet count (4.0 each) suggests a brief and possibly automated interaction typical of scanning tools.\n- **Protocol and Port Usage:** The use of Protocol 6 (TCP) and destination port 80 suggests targeting web services, a common focus for attackers looking to exploit web vulnerabilities.\n\n**Comparison with Known Attack Patterns:** The characteristics align with known patterns of SYN scanning, where attackers send SYN packets to various ports to identify open services.\n\n### Threat Analysis\n\n**Potential Security Implications:** Unauthorized reconnaissance and mapping of network services, leading to information disclosure about active services and potentially vulnerable entry points.\n\n**Estimated Severity Level:** Medium\n\n**Possible Attack Vectors:** Utilization of automated scanning tools to discover open ports and services for future exploitation.\n\n**Threat Level Rating:** 5/10\n- **Justification:** While the detected activity suggests preliminary reconnaissance rather than direct exploitation, it indicates an attacker's interest and potential precursor to more severe attacks.\n\n**Immediate and Potential Future Impacts:** Immediate impact is limited to potential information disclosure. However, the future impact could include targeted attacks on discovered services, leading to unauthorized access, data breaches, or service disruption.\n\n### Network Behavior Analysis\n\n**Suspicious Patterns:**\n- **Packet Flow Characteristics:** The equal number of forward and backward packets with minimal payload sizes is atypical for legitimate traffic, which usually exhibits more variability in packet sizes and counts based on the application.\n- **Timing Patterns:** The mean inter-arrival times (Flow IAT Mean: 4996.142857, Forward IAT Mean: 8906.0, Backward IAT Mean: 6288.0) and their standard deviations suggest automated, periodic packet transmission rather than human-driven interaction.\n- **Flag Usage:** The exclusive use of SYN flags without ACK flags in the context of TCP traffic is a hallmark of SYN scanning.\n- **Protocol Behavior:** The source port (43374) and destination port (80) usage is typical for web traffic, but in the context of other indicators, it suggests targeting rather than normal browsing or service use.\n\n**Comparison to Normal Traffic Patterns:** Normal web traffic would typically show a completion of the TCP three-way handshake (SYN, SYN-ACK, ACK), varied packet sizes reflecting actual data exchange, and less regular timing patterns reflecting human or complex application behavior.\n\n### Recommendations\n\n**Security Measures:**\n- Implement intrusion detection systems (IDS) with signatures to detect SYN scan attempts.\n- Employ stateful firewalls that can recognize and block incomplete TCP handshakes or unusual packet patterns.\n- Harden exposed services on port 80 and other common ports by ensuring they are up-to-date and configured securely.\n\n**Monitoring or Detection Rules:**\n- Alert on SYN packets to common ports that do not result in a completed TCP handshake.\n- Monitor for patterns of traffic with minimal packet sizes and regular inter-arrival times.\n\n**Immediate Actions:**\n- Investigate the source of the scanning attempts to determine the scope and potential targets within the network.\n- Temporarily block IPs associated with suspicious SYN scanning at the firewall level.\n\n**Firewall Rules or IDS Signatures:**\n- Block incoming connections that only send SYN packets without completing the handshake.\n- Signature for IDS: Alert on multiple SYN requests from the same IP to different ports within a short time frame without corresponding ACKs.\n\n**Preventive and Detective Controls:**\n- Regularly update and patch services exposed on common ports to reduce vulnerability to exploits.\n- Implement network segmentation to limit the scope of access should an attacker gain a foothold.\n- Continuously monitor network traffic for anomalies and adjust security controls based on emerging threat patterns.",
+        "metrics": {
+          "malicious_confidence": null,
+          "severity_level": null,
+          "attack_type": "reconnaissance",
+          "threat_level": null,
+          "key_indicators": [
+            "**",
+            "**"
+          ],
+          "recommendations": [
+            "**security measures:**",
+            "**"
+          ],
+          "attack_vectors": [
+            "** utilization of automated scanning tools to discover open ports and services for future exploitation."
+          ],
+          "suspicious_patterns": []
+        },
+        "timestamp": "20250331_085735"
+      },
+      {
+        "sample_index": 9,
+        "analysis": "### 1. Attack Classification\n\n- **Confidence Level**: 75%\n- **Type of Attack**: The traffic sample suggests a potential reconnaissance or scanning attack.\n- **Key Indicators**:\n  - **Protocol and Port Usage**: The source port is 80 (HTTP), and the destination port is 40849, which is non-standard and atypical for HTTP traffic, indicating possible scanning for open ports or services.\n  - **Packet Length Stats**: The maximum packet length is 30 bytes, with a mean of 5.454545455 and a standard deviation of 12.13559752. These small and inconsistent packet sizes are unusual for legitimate HTTP traffic, suggesting probing activities.\n  - **Flag Analysis**: The presence of 1 FIN flag and 1 ACK flag without corresponding SYN flags is atypical, as FIN flags are generally seen at the end of a TCP session, not in isolation or without preceding SYN flags in legitimate connections.\n  - **Timing Patterns**: The flow inter-arrival times (IAT) have a high standard deviation (8887.679854 for Flow IAT Std), indicating irregular timing that could be associated with automated scanning tools.\n\n### 2. Threat Analysis\n\n- **Potential Security Implications**: Unauthorized reconnaissance or scanning can lead to the discovery of vulnerable services, which could be exploited in future attacks.\n- **Estimated Severity Level**: Medium\n- **Possible Attack Vectors**: The attacker might be using automated scanning tools to identify open ports and services for future exploitation.\n- **Threat Level**: 6/10\n  - **Justification**: While the current traffic does not indicate an active exploitation, reconnaissance is a critical first step in most attack chains, indicating a preparatory phase for potentially more severe attacks.\n- **Immediate and Potential Future Impacts**: Immediate impact is low, as reconnaissance itself does not disrupt services. However, the information gathered could be used for more severe attacks, such as exploiting discovered vulnerabilities, leading to unauthorized access or data breaches.\n\n### 3. Network Behavior Analysis\n\n- **Suspicious Patterns**:\n  - **Packet Flow Characteristics**: The forward/backward ratio of 2.0 and the small packet sizes are unusual for normal HTTP traffic, indicating potential scanning or probing.\n  - **Timing Patterns**: The high standard deviation in flow IAT suggests automated, irregular traffic patterns, unlike human-generated traffic.\n  - **Flag Usage**: The use of FIN and ACK flags without SYN flags is not typical for establishing legitimate TCP connections, indicating possible evasion techniques or scanning.\n  - **Protocol Behavior**: Usage of HTTP (protocol 6) from a standard port (80) to a high, non-standard port (40849) is not typical for regular web traffic, suggesting scanning or evasion.\n- **Comparison to Normal Traffic Patterns**: Normal HTTP traffic would typically show consistent packet sizes with less deviation, regular timing intervals, SYN flags for connection establishment, and communication between standard web service ports (e.g., 80, 443) and client ports.\n\n### 4. Recommendations\n\n- **Security Measures**:\n  - Implement network segmentation to limit the scanner's ability to probe internal network resources.\n  - Use intrusion detection systems (IDS) to detect and alert on scanning activities.\n  - Employ rate limiting on ports to reduce the effectiveness of scanning.\n- **Monitoring or Detection Rules**:\n  - Alert on TCP traffic with FIN flags without preceding SYN flags.\n  - Monitor for irregular packet sizes and timing patterns indicative of scanning.\n  - Detect connections to non-standard ports originating from standard service ports.\n- **Immediate Actions**:\n  - Investigate the source of the scanning traffic and block if deemed malicious.\n  - Review firewall rules to ensure only necessary ports are open and accessible from the internet.\n- **Firewall Rules or IDS Signatures**:\n  - Block incoming connections to non-standard ports that should not be publicly accessible.\n  - Create IDS signatures to alert on TCP packets with unusual flag combinations or small packet sizes indicative of scanning activities.\n- **Preventive and Detective Controls**:\n  - Regularly update and patch services to mitigate vulnerabilities that could be exploited by attackers once discovered through scanning.\n  - Employ continuous monitoring and logging of network traffic for analysis and early detection of potential reconnaissance activities.",
+        "metrics": {
+          "malicious_confidence": null,
+          "severity_level": null,
+          "attack_type": "reconnaissance",
+          "threat_level": null,
+          "key_indicators": [],
+          "recommendations": [
+            "- **security measures**:"
+          ],
+          "attack_vectors": [],
+          "suspicious_patterns": [
+            "(40849) is not typical for regular web traffic, suggesting scanning or evasion.",
+            "originating from standard service ports.",
+            "that should not be publicly accessible.",
+            "that could be associated with automated scanning tools."
+          ]
+        },
+        "timestamp": "20250331_085806"
+      }
+    ]
+  },
+  "enhanced_metrics": {
+    "0": {
+      "packet_size_range": 0.0,
+      "flag_metrics": {
+        "psh_flag_count": 0.0,
+        "urg_flag_count": 0.0,
+        "syn_flag_count": 0.0,
+        "rst_flag_count": 0.0,
+        "fin_flag_count": 0.0,
+        "ack_flag_count": 0.0
+      },
+      "timing_metrics": {
+        "iat_variability": 0.0,
+        "iat_mean": 22.0,
+        "iat_std": 0.0,
+        "active_mean": 0.0,
+        "idle_mean": 0.0
+      },
+      "flow_metrics": {
+        "packet_rate": 0.0,
+        "bytes_per_second": 0.0,
+        "packets_per_second": 90909.09091
+      },
+      "protocol_metrics": {
+        "protocol": "0",
+        "dst_port": 0,
+        "port_category": "well_known"
+      },
+      "raw_values": {
+        "packet_length": {
+          "min": 0,
+          "max": 0,
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "flags": {
+          "psh": 0,
+          "urg": 0,
+          "syn": 0,
+          "rst": 0,
+          "fin": 0,
+          "ack": 0,
+          "total_forward": 0
+        },
+        "timing": {
+          "iat_mean": 22.0,
+          "iat_std": 0.0,
+          "active_mean": 0.0,
+          "idle_mean": 0.0
+        },
+        "flow": {
+          "duration": 22,
+          "total_packets": 0,
+          "bytes_per_second": 0.0,
+          "packets_per_second": 90909.09091
+        }
+      }
+    },
+    "1": {
+      "packet_size_range": 0.0,
+      "flag_metrics": {
+        "psh_flag_count": 0.0,
+        "urg_flag_count": 0.0,
+        "syn_flag_count": 0.0,
+        "rst_flag_count": 0.0,
+        "fin_flag_count": 1.0,
+        "ack_flag_count": 1.0
+      },
+      "timing_metrics": {
+        "iat_variability": 0.0,
+        "iat_mean": 27024.0,
+        "iat_std": 0.0,
+        "active_mean": 0.0,
+        "idle_mean": 0.0
+      },
+      "flow_metrics": {
+        "packet_rate": 0.0,
+        "bytes_per_second": 0.0,
+        "packets_per_second": 74.00828893
+      },
+      "protocol_metrics": {
+        "protocol": "6",
+        "dst_port": 41958,
+        "port_category": "registered"
+      },
+      "raw_values": {
+        "packet_length": {
+          "min": 0,
+          "max": 0,
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "flags": {
+          "psh": 0,
+          "urg": 0,
+          "syn": 0,
+          "rst": 0,
+          "fin": 1,
+          "ack": 1,
+          "total_forward": 0
+        },
+        "timing": {
+          "iat_mean": 27024.0,
+          "iat_std": 0.0,
+          "active_mean": 0.0,
+          "idle_mean": 0.0
+        },
+        "flow": {
+          "duration": 27024,
+          "total_packets": 0,
+          "bytes_per_second": 0.0,
+          "packets_per_second": 74.00828893
+        }
+      }
+    },
+    "2": {
+      "packet_size_range": 0.0,
+      "flag_metrics": {
+        "psh_flag_count": 0.0,
+        "urg_flag_count": 0.0,
+        "syn_flag_count": 0.0,
+        "rst_flag_count": 0.0,
+        "fin_flag_count": 0.0,
+        "ack_flag_count": 0.0
+      },
+      "timing_metrics": {
+        "iat_variability": 0.0,
+        "iat_mean": 2.0,
+        "iat_std": 0.0,
+        "active_mean": 0.0,
+        "idle_mean": 0.0
+      },
+      "flow_metrics": {
+        "packet_rate": 0.0,
+        "bytes_per_second": 0.0,
+        "packets_per_second": 1000000.0
+      },
+      "protocol_metrics": {
+        "protocol": "0",
+        "dst_port": 0,
+        "port_category": "well_known"
+      },
+      "raw_values": {
+        "packet_length": {
+          "min": 0,
+          "max": 0,
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "flags": {
+          "psh": 0,
+          "urg": 0,
+          "syn": 0,
+          "rst": 0,
+          "fin": 0,
+          "ack": 0,
+          "total_forward": 0
+        },
+        "timing": {
+          "iat_mean": 2.0,
+          "iat_std": 0.0,
+          "active_mean": 0.0,
+          "idle_mean": 0.0
+        },
+        "flow": {
+          "duration": 2,
+          "total_packets": 0,
+          "bytes_per_second": 0.0,
+          "packets_per_second": 1000000.0
+        }
+      }
+    },
+    "3": {
+      "packet_size_ratio": 11.155555555555555,
+      "packet_size_range": 457.0,
+      "flag_metrics": {
+        "psh_flag_ratio": 0.0,
+        "psh_flag_count": 0.0,
+        "urg_flag_ratio": 0.0,
+        "urg_flag_count": 0.0,
+        "syn_flag_ratio": 0.0,
+        "syn_flag_count": 0.0,
+        "rst_flag_ratio": 0.0,
+        "rst_flag_count": 0.0,
+        "fin_flag_ratio": 0.0,
+        "fin_flag_count": 0.0,
+        "ack_flag_ratio": 0.0,
+        "ack_flag_count": 0.0
+      },
+      "timing_metrics": {
+        "iat_variability": 1.2297261588356763,
+        "iat_mean": 11870.33333,
+        "iat_std": 14597.25941,
+        "active_mean": 0.0,
+        "idle_mean": 0.0
+      },
+      "flow_metrics": {
+        "packet_rate": 2.808121086181236e-05,
+        "bytes_per_second": 22127.99416,
+        "packets_per_second": 112.3248434
+      },
+      "protocol_metrics": {
+        "protocol": "17",
+        "dst_port": 53,
+        "port_category": "well_known"
+      },
+      "raw_values": {
+        "packet_length": {
+          "min": 45,
+          "max": 502,
+          "mean": 166.6,
+          "std": 198.5681243
+        },
+        "flags": {
+          "psh": 0,
+          "urg": 0,
+          "syn": 0,
+          "rst": 0,
+          "fin": 0,
+          "ack": 0,
+          "total_forward": 1
+        },
+        "timing": {
+          "iat_mean": 11870.33333,
+          "iat_std": 14597.25941,
+          "active_mean": 0.0,
+          "idle_mean": 0.0
+        },
+        "flow": {
+          "duration": 35611,
+          "total_packets": 1,
+          "bytes_per_second": 22127.99416,
+          "packets_per_second": 112.3248434
+        }
+      }
+    },
+    "4": {
+      "packet_size_range": 0.0,
+      "flag_metrics": {
+        "psh_flag_count": 0.0,
+        "urg_flag_count": 0.0,
+        "syn_flag_count": 0.0,
+        "rst_flag_count": 0.0,
+        "fin_flag_count": 0.0,
+        "ack_flag_count": 0.0
+      },
+      "timing_metrics": {
+        "iat_variability": 0.0,
+        "iat_mean": 14.0,
+        "iat_std": 0.0,
+        "active_mean": 0.0,
+        "idle_mean": 0.0
+      },
+      "flow_metrics": {
+        "packet_rate": 0.0,
+        "bytes_per_second": 0.0,
+        "packets_per_second": 142857.1429
+      },
+      "protocol_metrics": {
+        "protocol": "0",
+        "dst_port": 0,
+        "port_category": "well_known"
+      },
+      "raw_values": {
+        "packet_length": {
+          "min": 0,
+          "max": 0,
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "flags": {
+          "psh": 0,
+          "urg": 0,
+          "syn": 0,
+          "rst": 0,
+          "fin": 0,
+          "ack": 0,
+          "total_forward": 0
+        },
+        "timing": {
+          "iat_mean": 14.0,
+          "iat_std": 0.0,
+          "active_mean": 0.0,
+          "idle_mean": 0.0
+        },
+        "flow": {
+          "duration": 14,
+          "total_packets": 0,
+          "bytes_per_second": 0.0,
+          "packets_per_second": 142857.1429
+        }
+      }
+    },
+    "5": {
+      "packet_size_range": 30.0,
+      "flag_metrics": {
+        "psh_flag_ratio": 0.0,
+        "psh_flag_count": 0.0,
+        "urg_flag_ratio": 0.0,
+        "urg_flag_count": 0.0,
+        "syn_flag_ratio": 0.25,
+        "syn_flag_count": 1.0,
+        "rst_flag_ratio": 0.0,
+        "rst_flag_count": 0.0,
+        "fin_flag_ratio": 0.0,
+        "fin_flag_count": 0.0,
+        "ack_flag_ratio": 0.0,
+        "ack_flag_count": 0.0
+      },
+      "timing_metrics": {
+        "iat_variability": 1.3905232265372167,
+        "iat_mean": 618.0,
+        "iat_std": 859.3433539999999,
+        "active_mean": 0.0,
+        "idle_mean": 0.0
+      },
+      "flow_metrics": {
+        "packet_rate": 0.0009246417013407304,
+        "bytes_per_second": 13869.62552,
+        "packets_per_second": 1849.283403
+      },
+      "protocol_metrics": {
+        "protocol": "6",
+        "dst_port": 80,
+        "port_category": "well_known"
+      },
+      "raw_values": {
+        "packet_length": {
+          "min": 0,
+          "max": 30,
+          "mean": 6.666666667,
+          "std": 13.22875656
+        },
+        "flags": {
+          "psh": 0,
+          "urg": 0,
+          "syn": 1,
+          "rst": 0,
+          "fin": 0,
+          "ack": 0,
+          "total_forward": 4
+        },
+        "timing": {
+          "iat_mean": 618.0,
+          "iat_std": 859.3433539999999,
+          "active_mean": 0.0,
+          "idle_mean": 0.0
+        },
+        "flow": {
+          "duration": 4326,
+          "total_packets": 4,
+          "bytes_per_second": 13869.62552,
+          "packets_per_second": 1849.283403
+        }
+      }
+    },
+    "6": {
+      "packet_size_range": 1.0,
+      "flag_metrics": {
+        "psh_flag_ratio": 0.5,
+        "psh_flag_count": 1.0,
+        "urg_flag_ratio": 0.0,
+        "urg_flag_count": 0.0,
+        "syn_flag_ratio": 0.0,
+        "syn_flag_count": 0.0,
+        "rst_flag_ratio": 0.0,
+        "rst_flag_count": 0.0,
+        "fin_flag_ratio": 0.0,
+        "fin_flag_count": 0.0,
+        "ack_flag_ratio": 0.5,
+        "ack_flag_count": 1.0
+      },
+      "timing_metrics": {
+        "iat_variability": 2.1799830037148418,
+        "iat_mean": 1130.6,
+        "iat_std": 2464.688784,
+        "active_mean": 0.0,
+        "idle_mean": 0.0
+      },
+      "flow_metrics": {
+        "packet_rate": 0.0003537944454272068,
+        "bytes_per_second": 176.8972227,
+        "packets_per_second": 1061.383336
+      },
+      "protocol_metrics": {
+        "protocol": "6",
+        "dst_port": 80,
+        "port_category": "well_known"
+      },
+      "raw_values": {
+        "packet_length": {
+          "min": 0,
+          "max": 1,
+          "mean": 0.285714286,
+          "std": 0.487950036
+        },
+        "flags": {
+          "psh": 1,
+          "urg": 0,
+          "syn": 0,
+          "rst": 0,
+          "fin": 0,
+          "ack": 1,
+          "total_forward": 2
+        },
+        "timing": {
+          "iat_mean": 1130.6,
+          "iat_std": 2464.688784,
+          "active_mean": 0.0,
+          "idle_mean": 0.0
+        },
+        "flow": {
+          "duration": 5653,
+          "total_packets": 2,
+          "bytes_per_second": 176.8972227,
+          "packets_per_second": 1061.383336
+        }
+      }
+    },
+    "7": {
+      "packet_size_ratio": 7.948717948717949,
+      "packet_size_range": 271.0,
+      "flag_metrics": {
+        "psh_flag_ratio": 0.0,
+        "psh_flag_count": 0.0,
+        "urg_flag_ratio": 0.0,
+        "urg_flag_count": 0.0,
+        "syn_flag_ratio": 0.0,
+        "syn_flag_count": 0.0,
+        "rst_flag_ratio": 0.0,
+        "rst_flag_count": 0.0,
+        "fin_flag_ratio": 0.0,
+        "fin_flag_count": 0.0,
+        "ack_flag_ratio": 0.0,
+        "ack_flag_count": 0.0
+      },
+      "timing_metrics": {
+        "iat_variability": 0.547543705978466,
+        "iat_mean": 1307.333333,
+        "iat_std": 715.8221381,
+        "active_mean": 0.0,
+        "idle_mean": 0.0
+      },
+      "flow_metrics": {
+        "packet_rate": 0.00025497195308516065,
+        "bytes_per_second": 174910.7598,
+        "packets_per_second": 1019.887812
+      },
+      "protocol_metrics": {
+        "protocol": "17",
+        "dst_port": 53,
+        "port_category": "well_known"
+      },
+      "raw_values": {
+        "packet_length": {
+          "min": 39,
+          "max": 310,
+          "mean": 145.0,
+          "std": 145.2084708
+        },
+        "flags": {
+          "psh": 0,
+          "urg": 0,
+          "syn": 0,
+          "rst": 0,
+          "fin": 0,
+          "ack": 0,
+          "total_forward": 1
+        },
+        "timing": {
+          "iat_mean": 1307.333333,
+          "iat_std": 715.8221381,
+          "active_mean": 0.0,
+          "idle_mean": 0.0
+        },
+        "flow": {
+          "duration": 3922,
+          "total_packets": 1,
+          "bytes_per_second": 174910.7598,
+          "packets_per_second": 1019.887812
+        }
+      }
+    },
+    "8": {
+      "packet_size_range": 0.0,
+      "flag_metrics": {
+        "psh_flag_count": 0.0,
+        "urg_flag_count": 0.0,
+        "syn_flag_count": 0.0,
+        "rst_flag_count": 0.0,
+        "fin_flag_count": 0.0,
+        "ack_flag_count": 0.0
+      },
+      "timing_metrics": {
+        "iat_variability": 0.0,
+        "iat_mean": 1.0,
+        "iat_std": 0.0,
+        "active_mean": 0.0,
+        "idle_mean": 0.0
+      },
+      "flow_metrics": {
+        "packet_rate": 0.0,
+        "bytes_per_second": 0.0,
+        "packets_per_second": 2000000.0
+      },
+      "protocol_metrics": {
+        "protocol": "0",
+        "dst_port": 0,
+        "port_category": "well_known"
+      },
+      "raw_values": {
+        "packet_length": {
+          "min": 0,
+          "max": 0,
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "flags": {
+          "psh": 0,
+          "urg": 0,
+          "syn": 0,
+          "rst": 0,
+          "fin": 0,
+          "ack": 0,
+          "total_forward": 0
+        },
+        "timing": {
+          "iat_mean": 1.0,
+          "iat_std": 0.0,
+          "active_mean": 0.0,
+          "idle_mean": 0.0
+        },
+        "flow": {
+          "duration": 1,
+          "total_packets": 0,
+          "bytes_per_second": 0.0,
+          "packets_per_second": 2000000.0
+        }
+      }
+    },
+    "9": {
+      "packet_size_range": 1448.0,
+      "flag_metrics": {
+        "psh_flag_ratio": 0.0,
+        "psh_flag_count": 0.0,
+        "urg_flag_ratio": 0.0,
+        "urg_flag_count": 0.0,
+        "syn_flag_ratio": 0.5,
+        "syn_flag_count": 1.0,
+        "rst_flag_ratio": 0.0,
+        "rst_flag_count": 0.0,
+        "fin_flag_ratio": 0.0,
+        "fin_flag_count": 0.0,
+        "ack_flag_ratio": 0.0,
+        "ack_flag_count": 0.0
+      },
+      "timing_metrics": {
+        "iat_variability": 1.648909913953743,
+        "iat_mean": 1262.857143,
+        "iat_std": 2082.337663,
+        "active_mean": 0.0,
+        "idle_mean": 0.0
+      },
+      "flow_metrics": {
+        "packet_rate": 0.00022624434389140272,
+        "bytes_per_second": 255769.2308,
+        "packets_per_second": 904.9773756
+      },
+      "protocol_metrics": {
+        "protocol": "6",
+        "dst_port": 80,
+        "port_category": "well_known"
+      },
+      "raw_values": {
+        "packet_length": {
+          "min": 0,
+          "max": 1448,
+          "mean": 251.2222222,
+          "std": 480.4994219
+        },
+        "flags": {
+          "psh": 0,
+          "urg": 0,
+          "syn": 1,
+          "rst": 0,
+          "fin": 0,
+          "ack": 0,
+          "total_forward": 2
+        },
+        "timing": {
+          "iat_mean": 1262.857143,
+          "iat_std": 2082.337663,
+          "active_mean": 0.0,
+          "idle_mean": 0.0
+        },
+        "flow": {
+          "duration": 8840,
+          "total_packets": 2,
+          "bytes_per_second": 255769.2308,
+          "packets_per_second": 904.9773756
+        }
+      }
+    }
+  },
+  "suspicious_patterns": {
+    "0": [],
+    "1": [],
+    "2": [],
+    "3": [],
+    "4": [],
+    "5": [
+      "Incomplete TCP handshake: SYN without ACK"
+    ],
+    "6": [
+      "High IAT variability: 2.18"
+    ],
+    "7": [],
+    "8": [],
+    "9": [
+      "Large packet size range: 1448.00",
+      "Incomplete TCP handshake: SYN without ACK"
+    ]
+  },
+  "attack_correlation": {
+    "6": {
+      "confidence": 80,
+      "patterns": [
+        "High IAT variability: 2.18"
+      ],
+      "metrics": {
+        "packet_size_range": 1.0,
+        "flag_metrics": {
+          "psh_flag_ratio": 0.5,
+          "psh_flag_count": 1.0,
+          "urg_flag_ratio": 0.0,
+          "urg_flag_count": 0.0,
+          "syn_flag_ratio": 0.0,
+          "syn_flag_count": 0.0,
+          "rst_flag_ratio": 0.0,
+          "rst_flag_count": 0.0,
+          "fin_flag_ratio": 0.0,
+          "fin_flag_count": 0.0,
+          "ack_flag_ratio": 0.5,
+          "ack_flag_count": 1.0
+        },
+        "timing_metrics": {
+          "iat_variability": 2.1799830037148418,
+          "iat_mean": 1130.6,
+          "iat_std": 2464.688784,
+          "active_mean": 0.0,
+          "idle_mean": 0.0
+        },
+        "flow_metrics": {
+          "packet_rate": 0.0003537944454272068,
+          "bytes_per_second": 176.8972227,
+          "packets_per_second": 1061.383336
+        },
+        "protocol_metrics": {
+          "protocol": "6",
+          "dst_port": 80,
+          "port_category": "well_known"
+        },
+        "raw_values": {
+          "packet_length": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.285714286,
+            "std": 0.487950036
+          },
+          "flags": {
+            "psh": 1,
+            "urg": 0,
+            "syn": 0,
+            "rst": 0,
+            "fin": 0,
+            "ack": 1,
+            "total_forward": 2
+          },
+          "timing": {
+            "iat_mean": 1130.6,
+            "iat_std": 2464.688784,
+            "active_mean": 0.0,
+            "idle_mean": 0.0
+          },
+          "flow": {
+            "duration": 5653,
+            "total_packets": 2,
+            "bytes_per_second": 176.8972227,
+            "packets_per_second": 1061.383336
+          }
+        }
+      },
+      "correlations": []
+    }
+  },
+  "metric_correlations": {
+    "0": [],
+    "1": [],
+    "2": [],
+    "3": [],
+    "4": [],
+    "5": [],
+    "6": [],
+    "7": [],
+    "8": [],
+    "9": []
+  },
+  "pattern_statistics": {
+    "Incomplete TCP handshake: SYN without ACK": 2,
+    "High IAT variability: 2.18": 1,
+    "Large packet size range: 1448.00": 1
+  },
+  "correlation_statistics": {}
+}

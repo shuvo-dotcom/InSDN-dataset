@@ -1,0 +1,402 @@
+{
+  "results": [
+    {
+      "is_malicious": false,
+      "attack_type": "ddos",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 10,
+      "key_indicators": [
+        "5. key indicators that led to this conclusion"
+      ]
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "ddos",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 10,
+      "key_indicators": [
+        "5. key indicators that led to this conclusion"
+      ]
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 10,
+      "key_indicators": [
+        "5. key indicators that led to this conclusion"
+      ]
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": [
+        "5. the key indicator that led to this conclusion is the high syn flag value compared to the other flags."
+      ]
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 10,
+      "key_indicators": [
+        "5. key indicators that led to this conclusion"
+      ]
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 10,
+      "key_indicators": [
+        "5. key indicators that led to this conclusion"
+      ]
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 10,
+      "key_indicators": [
+        "5. key indicators that led to this conclusion"
+      ]
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 10,
+      "key_indicators": [
+        ""
+      ]
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 10,
+      "key_indicators": [
+        ""
+      ]
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 10,
+      "key_indicators": [
+        "5. key indicators that led to this conclusion",
+        "the key indicator that led to this conclusion is the lack of clear, unnormalized data. negative values for packet rates, byte rates, flow duration, and packet size don't make sense in a real-world context. also, the protocol, source port, and destination port values are not clear. the flag analysis values are also unclear without knowing what they represent in this context."
+      ]
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 10,
+      "key_indicators": [
+        "5. key indicators that led to this conclusion",
+        "the key indicator here is the high fin flag value. in normal network traffic, you would expect syn and ack flags to be more prevalent, as they are used to establish and maintain connections. a high number of fin flags, which are used to close connections, could indicate that something unusual is happening."
+      ]
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 10,
+      "key_indicators": [
+        "5. key indicators that led to this conclusion"
+      ]
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 10,
+      "key_indicators": [
+        "5. key indicators that led to this conclusion"
+      ]
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": true,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 10,
+      "key_indicators": [
+        "it's difficult to say definitively based on the provided data, but there are some suspicious indicators.",
+        "5. key indicators that led to this conclusion"
+      ]
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 4,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "unknown",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "ddos",
+      "severity": "LOW",
+      "threat_level": 1,
+      "key_indicators": []
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "ddos",
+      "severity": "HIGH",
+      "threat_level": 10,
+      "key_indicators": [
+        "5. key indicators that led to this conclusion"
+      ]
+    },
+    {
+      "is_malicious": false,
+      "attack_type": "ddos",
+      "severity": "LOW",
+      "threat_level": 4,
+      "key_indicators": []
+    }
+  ],
+  "attack_types": {
+    "ddos": 2
+  },
+  "severity_distribution": {
+    "LOW": 0,
+    "MEDIUM": 0,
+    "HIGH": 2
+  },
+  "threat_levels": {
+    "10": 2
+  },
+  "suspicious_patterns": {
+    "5. key indicators that led to this conclusion": 2,
+    "it's difficult to say definitively based on the provided data, but there are some suspicious indicators.": 1
+  }
+}
