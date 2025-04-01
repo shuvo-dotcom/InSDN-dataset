@@ -9,6 +9,7 @@ import socket
 import netifaces
 import subprocess
 from collections import defaultdict
+import requests
 
 class NetworkMonitor:
     def __init__(self):
@@ -32,13 +33,22 @@ class NetworkMonitor:
         self.last_time = time.time()
         self.network_interfaces = {}
         self.connections = defaultdict(list)
+        self.vulnerable_connections = set()
+        self.last_check = time.time()
+        self.connection_threshold = 10  # connections per minute
         
     def setup_logging(self):
+        """Setup logging configuration"""
+        log_dir = "logs"
+        if not os.path.exists(log_dir):
+            os.makedirs(log_dir)
+        
+        log_file = os.path.join(log_dir, f"network_monitor_{datetime.now().strftime('%Y%m%d')}.log")
         logging.basicConfig(
             level=logging.INFO,
             format='%(asctime)s - %(levelname)s - %(message)s',
             handlers=[
-                logging.FileHandler('logs/network_monitor.log'),
+                logging.FileHandler(log_file),
                 logging.StreamHandler()
             ]
         )
@@ -274,3 +284,81 @@ class NetworkMonitor:
         if os.path.exists(filepath):
             with open(filepath, 'r') as f:
                 self.metrics_history = json.load(f) 
+    
+    def get_client_info(self):
+        """Get client network information using multiple methods"""
+        client_info = {
+            'public_ip': None,
+            'local_ip': None,
+            'hostname': socket.gethostname(),
+            'interfaces': []
+        }
+        
+        try:
+            # Try to get public IP using multiple services
+            public_ip_services = [
+                'https://api.ipify.org?format=json',
+                'https://api.myip.com',
+                'https://api.ip.sb/ip'
+            ]
+            
+            for service in public_ip_services:
+                try:
+                    response = requests.get(service, timeout=5)
+                    if response.status_code == 200:
+                        if 'ipify.org' in service:
+                            client_info['public_ip'] = response.json()['ip']
+                        elif 'myip.com' in service:
+                            client_info['public_ip'] = response.json()['ip']
+                        elif 'ip.sb' in service:
+                            client_info['public_ip'] = response.text.strip()
+                        break
+                except:
+                    continue
+
+            # Get local IP using multiple methods
+            try:
+                # Method 1: Using socket connection
+                s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+                s.connect(("8.8.8.8", 80))
+                client_info['local_ip'] = s.getsockname()[0]
+                s.close()
+            except:
+                # Method 2: Using netifaces
+                for interface in netifaces.interfaces():
+                    addrs = netifaces.ifaddresses(interface)
+                    if netifaces.AF_INET in addrs:
+                        for addr in addrs[netifaces.AF_INET]:
+                            if not addr['addr'].startswith('127.'):
+                                client_info['local_ip'] = addr['addr']
+                                break
+                    if client_info['local_ip']:
+                        break
+
+            # Get network interfaces
+            for interface in netifaces.interfaces():
+                interface_info = {
+                    'name': interface,
+                    'ip_addresses': [],
+                    'mac_address': None,
+                    'status': 'up' if netifaces.AF_INET in netifaces.ifaddresses(interface) else 'down'
+                }
+                
+                # Get IP addresses
+                if netifaces.AF_INET in netifaces.ifaddresses(interface):
+                    for addr in netifaces.ifaddresses(interface)[netifaces.AF_INET]:
+                        interface_info['ip_addresses'].append({
+                            'ip': addr['addr'],
+                            'netmask': addr['netmask']
+                        })
+                
+                # Get MAC address
+                if netifaces.AF_LINK in netifaces.ifaddresses(interface):
+                    interface_info['mac_address'] = netifaces.ifaddresses(interface)[netifaces.AF_LINK][0]['addr']
+                
+                client_info['interfaces'].append(interface_info)
+
+        except Exception as e:
+            logging.error(f"Error getting client info: {str(e)}")
+        
+        return client_info 

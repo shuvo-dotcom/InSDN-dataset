@@ -66,6 +66,28 @@ st.markdown("""
 st.sidebar.title("Settings")
 st.sidebar.markdown("### Configuration")
 
+# Display client information in sidebar (moved outside the loop)
+st.sidebar.header("Client Information")
+monitor = get_network_monitor()
+client_info = monitor.get_client_info()
+
+if client_info['public_ip']:
+    st.sidebar.metric("Public IP", client_info['public_ip'])
+if client_info['local_ip']:
+    st.sidebar.metric("Local IP", client_info['local_ip'])
+st.sidebar.metric("Hostname", client_info['hostname'])
+
+# Display network interfaces
+st.sidebar.subheader("Network Interfaces")
+for interface in client_info['interfaces']:
+    with st.sidebar.expander(interface['name']):
+        st.write(f"Status: {interface['status']}")
+        if interface['mac_address']:
+            st.write(f"MAC: {interface['mac_address']}")
+        for ip_info in interface['ip_addresses']:
+            st.write(f"IP: {ip_info['ip']}")
+            st.write(f"Netmask: {ip_info['netmask']}")
+
 # Model settings
 st.sidebar.subheader("Model Settings")
 epochs = st.sidebar.slider("Training Epochs", min_value=10, max_value=200, value=50)
@@ -88,8 +110,6 @@ with tab1:
     topology_placeholder = st.empty()
     
     # Start monitoring
-    monitor = get_network_monitor()
-    
     while True:
         try:
             # Get current metrics
@@ -181,13 +201,13 @@ with tab1:
                     for node in topology['nodes']:
                         color = 'red' if node.get('type') == 'host' else \
                                 'blue' if node.get('type') == 'interface' else \
-                                'green'
+                                'green' if node.get('type') == 'internet' else 'gray'
                         G.add_node(node.get('id', ''), 
                                   name=node.get('name', 'Unknown'),
                                   type=node.get('type', 'unknown'),
                                   color=color,
                                   ip=node.get('ip', 'N/A'),
-                                  mac=node.get('mac', 'N/A'))
+                                  public_ip=node.get('public_ip', 'N/A'))
                     
                     # Add edges with different styles based on type
                     for link in topology.get('links', []):
