@@ -299,7 +299,9 @@ class NetworkMonitor:
             public_ip_services = [
                 'https://api.ipify.org?format=json',
                 'https://api.myip.com',
-                'https://api.ip.sb/ip'
+                'https://api.ip.sb/ip',
+                'https://httpbin.org/ip',
+                'https://ipinfo.io/json'
             ]
             
             for service in public_ip_services:
@@ -312,6 +314,10 @@ class NetworkMonitor:
                             client_info['public_ip'] = response.json()['ip']
                         elif 'ip.sb' in service:
                             client_info['public_ip'] = response.text.strip()
+                        elif 'httpbin.org' in service:
+                            client_info['public_ip'] = response.json()['origin']
+                        elif 'ipinfo.io' in service:
+                            client_info['public_ip'] = response.json()['ip']
                         break
                 except:
                     continue
