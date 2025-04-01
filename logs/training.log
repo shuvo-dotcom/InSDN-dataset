@@ -214,3 +214,5 @@
 2025-03-29 20:47:20,141 - INFO - Epoch [100/100] completed. Avg Loss D: -0.6052, Avg Loss G: -0.0497
 2025-03-29 20:47:20,265 - INFO - Loss plot saved at epoch 100
 2025-03-29 20:47:20,415 - INFO - Training completed successfully
+2025-04-01 09:41:37,562 - ERROR - Error getting network metrics: module 'psutil' has no attribute 'virtual'
+2025-04-01 09:41:37,562 - ERROR - Error calculating anomaly score: 'NoneType' object is not subscriptable

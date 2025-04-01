@@ -5,3 +5,9 @@ torch
 scikit-learn
 openai
 tqdm
+streamlit
+plotly
+networkx
+python-dotenv
+psutil
+netifaces

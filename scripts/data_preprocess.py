@@ -1,46 +1,56 @@
 # data_preprocess.py
 import pandas as pd
-from sklearn.model_selection import train_test_split
+import numpy as np
+from sklearn.preprocessing import StandardScaler
 import os
 
 def preprocess_data():
-    base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data'))
-
-    # Load datasets
-    normal_df = pd.read_csv(os.path.join(base_dir, 'raw', 'Normal_data.csv'))
-    ovs_df = pd.read_csv(os.path.join(base_dir, 'raw', 'OVS.csv'))
-    meta_df = pd.read_csv(os.path.join(base_dir, 'raw', 'metasploitable.csv'))
-
-    # Combine anomaly datasets
-    anomaly_df = pd.concat([ovs_df, meta_df])
-
-    # Label encoding: Normal = 0, Anomaly = 1
-    normal_df['label'] = 0
-    anomaly_df['label'] = 1
-
-    # Combine normal and anomaly data (adjust proportions as needed)
-    combined_df = pd.concat([normal_df, anomaly_df])
-
-    # Select exactly 84 features (excluding label)
-    feature_columns = combined_df.columns.tolist()
-    feature_columns.remove('label')
-    feature_columns = feature_columns[:84]  # Ensure exactly 84 features
-    combined_df = combined_df[feature_columns + ['label']]
-
-    # Shuffle the dataset
-    combined_df = combined_df.sample(frac=1).reset_index(drop=True)
-
-    # Split into train (70%), validation (15%), and test (15%)
-    train_df, temp_df = train_test_split(combined_df, test_size=0.3, random_state=42)
-    validation_df, test_df = train_test_split(temp_df, test_size=0.5, random_state=42)
-
-    # Save processed datasets
-    train_df.to_csv(os.path.join(base_dir, 'processed', 'train_data.csv'), index=False)
-    validation_df.to_csv(os.path.join(base_dir, 'processed', 'validation_data.csv'), index=False)
-    test_df.to_csv(os.path.join(base_dir, 'processed', 'test_data.csv'), index=False)
-
-    print(f"Data preprocessing complete. Files saved in '{os.path.join(base_dir, 'processed')}'.")
-    print(f"Number of features: {len(feature_columns)}")
+    """Preprocess network data for GAN training"""
+    # Create necessary directories
+    data_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data')
+    processed_dir = os.path.join(data_dir, 'processed')
+    os.makedirs(processed_dir, exist_ok=True)
+    
+    # Generate sample network data (replace this with your actual data collection)
+    n_samples = 1000
+    n_features = 10
+    
+    # Generate synthetic network features
+    data = {
+        'packet_size': np.random.normal(1000, 200, n_samples),
+        'inter_arrival_time': np.random.exponential(0.1, n_samples),
+        'protocol_type': np.random.choice(['TCP', 'UDP', 'ICMP'], n_samples),
+        'src_port': np.random.randint(1024, 65535, n_samples),
+        'dst_port': np.random.randint(1024, 65535, n_samples),
+        'src_ip': np.random.randint(0, 2**32, n_samples),
+        'dst_ip': np.random.randint(0, 2**32, n_samples),
+        'packet_count': np.random.poisson(5, n_samples),
+        'byte_count': np.random.normal(5000, 1000, n_samples),
+        'duration': np.random.exponential(1.0, n_samples)
+    }
+    
+    # Convert to DataFrame
+    df = pd.DataFrame(data)
+    
+    # Convert categorical variables to numeric
+    df['protocol_type'] = df['protocol_type'].map({'TCP': 0, 'UDP': 1, 'ICMP': 2})
+    
+    # Scale numerical features
+    scaler = StandardScaler()
+    numerical_features = ['packet_size', 'inter_arrival_time', 'src_port', 'dst_port',
+                         'src_ip', 'dst_ip', 'packet_count', 'byte_count', 'duration']
+    df[numerical_features] = scaler.fit_transform(df[numerical_features])
+    
+    # Save processed data
+    output_path = os.path.join(processed_dir, 'train_data.csv')
+    df.to_csv(output_path, index=False)
+    
+    print(f"Preprocessed data saved to {output_path}")
+    print(f"Shape: {df.shape}")
+    print("\nFeature statistics:")
+    print(df.describe())
+    
+    return output_path
 
 if __name__ == "__main__":
     preprocess_data()
