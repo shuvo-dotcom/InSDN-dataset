@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">InSDN</string>
+    <string name="start_monitoring">Start Monitoring</string>
+    <string name="stop_monitoring">Stop Monitoring</string>
+    <string name="monitoring_active">SDN Monitoring Active</string>
+    <string name="monitoring_stopped">SDN Monitoring Stopped</string>
+</resources> 
