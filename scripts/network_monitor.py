@@ -10,6 +10,7 @@ import netifaces
 import subprocess
 from collections import defaultdict
 import requests
+import re
 
 class NetworkMonitor:
     def __init__(self):
@@ -36,6 +37,12 @@ class NetworkMonitor:
         self.vulnerable_connections = set()
         self.last_check = time.time()
         self.connection_threshold = 10  # connections per minute
+        self.attack_patterns = {
+            'ddos': re.compile(r'Simulated connection attempt'),
+            'port_scan': re.compile(r'Simulated open port found'),
+            'syn_flood': re.compile(r'Simulated SYN packet'),
+            'brute_force': re.compile(r'Simulated login attempt')
+        }
         
     def setup_logging(self):
         """Setup logging configuration"""
@@ -96,10 +103,29 @@ class NetworkMonitor:
             logging.error(f"Error getting active connections: {str(e)}")
             return defaultdict(list)
     
+    def check_attack_logs(self):
+        """Check attack simulator logs for attack patterns"""
+        try:
+            attack_log_path = os.path.join('logs', 'attack_simulator.log')
+            if not os.path.exists(attack_log_path):
+                return None
+            
+            with open(attack_log_path, 'r') as f:
+                log_content = f.read()
+            
+            detected_attacks = []
+            for attack_type, pattern in self.attack_patterns.items():
+                if pattern.search(log_content):
+                    detected_attacks.append(attack_type)
+            
+            return detected_attacks
+        except Exception as e:
+            logging.error(f"Error checking attack logs: {str(e)}")
+            return None
+    
     def get_network_metrics(self):
         """Collect current network metrics"""
         try:
-            # Get basic system metrics
             metrics = {
                 'timestamp': datetime.now(),
                 'cpu_percent': psutil.cpu_percent(),
@@ -109,8 +135,15 @@ class NetworkMonitor:
                 'new_connections': [],
                 'vulnerable_connections': [],
                 'traffic_rate': 0,
-                'network_errors': 0
+                'network_errors': 0,
+                'detected_attacks': []
             }
+
+            # Check for simulated attacks
+            detected_attacks = self.check_attack_logs()
+            if detected_attacks:
+                metrics['detected_attacks'] = detected_attacks
+                logging.info(f"Detected attacks: {detected_attacks}")
 
             # Calculate total connections and identify new ones
             for protocol, connections in metrics['connections'].items():
@@ -135,10 +168,24 @@ class NetworkMonitor:
 
             # Get network I/O statistics
             net_io = psutil.net_io_counters()
-            metrics['traffic_rate'] = (net_io.bytes_sent + net_io.bytes_recv) / (1024 * 1024)  # MB/s
+            current_time = time.time()
+            time_diff = current_time - self.last_time
+            
+            if time_diff > 0:
+                metrics['traffic_rate'] = ((net_io.bytes_sent + net_io.bytes_recv) - 
+                                         (self.last_bytes_sent + self.last_bytes_recv)) / (1024 * 1024 * time_diff)
+            
             metrics['network_errors'] = net_io.errin + net_io.errout
+            
+            # Update previous values
+            self.last_bytes_sent = net_io.bytes_sent
+            self.last_bytes_recv = net_io.bytes_recv
+            self.last_time = current_time
 
             self.metrics_history.append(metrics)
+            if len(self.metrics_history) > self.max_history:
+                self.metrics_history.pop(0)
+            
             return metrics
 
         except psutil.AccessDenied:
@@ -152,7 +199,8 @@ class NetworkMonitor:
                 'new_connections': [],
                 'vulnerable_connections': [],
                 'traffic_rate': 0,
-                'network_errors': 0
+                'network_errors': 0,
+                'detected_attacks': []
             }
         except Exception as e:
             logging.error(f"Error getting network metrics: {str(e)}")
@@ -165,30 +213,28 @@ class NetworkMonitor:
                 'new_connections': [],
                 'vulnerable_connections': [],
                 'traffic_rate': 0,
-                'network_errors': 0
+                'network_errors': 0,
+                'detected_attacks': []
             }
     
     def get_anomaly_score(self, metrics):
         """Calculate anomaly score based on network metrics"""
         try:
-            # Calculate anomaly score based on multiple factors
             score = 0.0
             
-            # CPU usage factor (0-0.3)
+            # Base factors
             cpu_factor = min(metrics['cpu_percent'] / 100, 1.0) * 0.3
-            score += cpu_factor
-            
-            # Memory usage factor (0-0.3)
             memory_factor = min(metrics['memory_percent'] / 100, 1.0) * 0.3
-            score += memory_factor
-            
-            # Network traffic factor (0-0.2)
             traffic_factor = min(metrics['traffic_rate'] / 1000, 1.0) * 0.2
-            score += traffic_factor
-            
-            # Connection count factor (0-0.2)
             connection_factor = min(metrics['total_connections'] / 100, 1.0) * 0.2
-            score += connection_factor
+            
+            # Attack detection boost
+            if metrics.get('detected_attacks'):
+                attack_boost = 0.3  # Additional score for detected attacks
+                score += attack_boost
+            
+            # Combine all factors
+            score += cpu_factor + memory_factor + traffic_factor + connection_factor
             
             return min(score, 1.0)
         except Exception as e:

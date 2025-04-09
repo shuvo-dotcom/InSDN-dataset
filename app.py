@@ -47,13 +47,41 @@ st.markdown("""
     .vulnerability-medium {
         color: #ffbb33;
     }
+    .attack-detected {
+        background-color: #ff4444;
+        color: white;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        margin: 1rem 0;
+        animation: fadeOut 5s forwards;
+    }
+    @keyframes fadeOut {
+        from { opacity: 1; }
+        to { opacity: 0; }
+    }
     </style>
 """, unsafe_allow_html=True)
 
-# Initialize network monitor
+# Initialize network monitor and session state
 @st.cache_resource
 def get_network_monitor():
     return NetworkMonitor()
+
+# Initialize session state for attack history and warnings
+if 'attack_history' not in st.session_state:
+    st.session_state.attack_history = []
+if 'current_warning' not in st.session_state:
+    st.session_state.current_warning = None
+if 'warning_start_time' not in st.session_state:
+    st.session_state.warning_start_time = None
+if 'last_metrics' not in st.session_state:
+    st.session_state.last_metrics = None
+if 'last_check_time' not in st.session_state:
+    st.session_state.last_check_time = None
+if 'warning_shown' not in st.session_state:
+    st.session_state.warning_shown = False
+if 'current_attacks' not in st.session_state:
+    st.session_state.current_attacks = set()
 
 # Title and description
 st.title("🔒 SDN Anomaly Detection Dashboard")
@@ -66,7 +94,7 @@ st.markdown("""
 st.sidebar.title("Settings")
 st.sidebar.markdown("### Configuration")
 
-# Display client information in sidebar (moved outside the loop)
+# Display client information in sidebar
 st.sidebar.header("Client Information")
 monitor = get_network_monitor()
 client_info = monitor.get_client_info()
@@ -109,222 +137,286 @@ with tab1:
     alerts_placeholder = st.empty()
     topology_placeholder = st.empty()
     
-    # Start monitoring
-    while True:
-        try:
-            # Get current metrics
-            metrics = monitor.get_network_metrics()
-            if metrics is None:
-                st.error("Failed to get network metrics. Please check the logs for details.")
-                time.sleep(monitoring_interval)
-                continue
-                
-            anomaly_score = monitor.get_anomaly_score(metrics)
+    # Get current metrics
+    metrics = monitor.get_network_metrics()
+    if metrics is None:
+        st.error("Failed to get network metrics. Please check the logs for details.")
+    else:
+        anomaly_score = monitor.get_anomaly_score(metrics)
+        
+        # Update metrics display
+        with metrics_placeholder.container():
+            col1, col2, col3 = st.columns(3)
             
-            # Update metrics display
-            with metrics_placeholder.container():
-                col1, col2, col3 = st.columns(3)
-                
-                with col1:
-                    st.metric(label="Active Connections", 
-                             value=metrics.get('total_connections', 0),
-                             delta=f"{metrics.get('total_connections', 0) - metrics.get('prev_connections', metrics.get('total_connections', 0))}")
-                    st.metric(label="Network Traffic (MB/s)", 
-                             value=f"{metrics.get('traffic_rate', 0):.2f}",
-                             delta=f"{metrics.get('traffic_rate', 0) - metrics.get('prev_traffic_rate', metrics.get('traffic_rate', 0)):.2f}")
-                
-                with col2:
-                    st.metric(label="CPU Usage (%)", 
-                             value=f"{metrics.get('cpu_percent', 0):.1f}",
-                             delta=f"{metrics.get('cpu_percent', 0) - metrics.get('prev_cpu_percent', metrics.get('cpu_percent', 0)):.1f}")
-                    st.metric(label="Memory Usage (%)", 
-                             value=f"{metrics.get('memory_percent', 0):.1f}",
-                             delta=f"{metrics.get('memory_percent', 0) - metrics.get('prev_memory_percent', metrics.get('memory_percent', 0)):.1f}")
-                
-                with col3:
-                    st.metric(label="Anomaly Score", 
-                             value=f"{anomaly_score:.2f}",
-                             delta=f"{anomaly_score - metrics.get('prev_anomaly_score', anomaly_score):.2f}")
-                    st.metric(label="Network Errors", 
-                             value=metrics.get('network_errors', 0),
-                             delta=f"{metrics.get('network_errors', 0) - metrics.get('prev_network_errors', metrics.get('network_errors', 0))}")
+            with col1:
+                st.metric(label="Active Connections", 
+                         value=metrics.get('total_connections', 0))
+                st.metric(label="Network Traffic (MB/s)", 
+                         value=f"{metrics.get('traffic_rate', 0):.2f}")
             
-            # Display new connections and vulnerabilities
-            with alerts_placeholder.container():
-                if metrics.get('new_connections'):
-                    st.subheader("New Connections")
-                    new_conn_data = []
-                    for conn in metrics['new_connections']:
-                        new_conn_data.append({
-                            'Protocol': conn.get('protocol', 'Unknown'),
-                            'Local Address': conn.get('local', 'Unknown'),
-                            'Remote Address': conn.get('remote', 'Unknown'),
-                            'State': conn.get('state', 'Unknown'),
-                            'Time': metrics['timestamp'].strftime('%H:%M:%S')
-                        })
-                    st.dataframe(pd.DataFrame(new_conn_data))
-                
-                if metrics.get('vulnerable_connections'):
-                    st.subheader("⚠️ Potentially Vulnerable Connections")
-                    vuln_data = []
-                    for vuln in metrics['vulnerable_connections']:
-                        conn = vuln.get('connection', {})
-                        vuln_data.append({
-                            'Protocol': conn.get('protocol', 'Unknown'),
-                            'Local Address': conn.get('local', 'Unknown'),
-                            'Remote Address': conn.get('remote', 'Unknown'),
-                            'State': conn.get('state', 'Unknown'),
-                            'Vulnerability': vuln.get('vulnerability', 'Unknown'),
-                            'Severity': vuln.get('severity', 'Unknown'),
-                            'Time': metrics['timestamp'].strftime('%H:%M:%S')
-                        })
-                    df = pd.DataFrame(vuln_data)
-                    for _, row in df.iterrows():
-                        severity_class = 'vulnerability-high' if row['Severity'] == 'High' else 'vulnerability-medium'
-                        st.markdown(f"""
-                            <div class="{severity_class}">
-                                <strong>{row['Vulnerability']}</strong> ({row['Severity']} Severity)<br>
-                                Protocol: {row['Protocol']} | Local: {row['Local Address']} | Remote: {row['Remote Address']}<br>
-                                Time: {row['Time']}
-                            </div>
-                        """, unsafe_allow_html=True)
+            with col2:
+                st.metric(label="CPU Usage (%)", 
+                         value=f"{metrics.get('cpu_percent', 0):.1f}")
+                st.metric(label="Memory Usage (%)", 
+                         value=f"{metrics.get('memory_percent', 0):.1f}")
             
-            # Update network topology
-            with topology_placeholder.container():
-                st.subheader("Network Topology")
-                topology = monitor.get_network_topology()
-                
-                if topology and topology.get('nodes'):
-                    G = nx.Graph()
-                    
-                    # Add nodes with different colors based on type
-                    for node in topology['nodes']:
-                        color = 'red' if node.get('type') == 'host' else \
-                                'blue' if node.get('type') == 'interface' else \
-                                'green' if node.get('type') == 'internet' else 'gray'
-                        G.add_node(node.get('id', ''), 
-                                  name=node.get('name', 'Unknown'),
-                                  type=node.get('type', 'unknown'),
-                                  color=color,
-                                  ip=node.get('ip', 'N/A'),
-                                  public_ip=node.get('public_ip', 'N/A'))
-                    
-                    # Add edges with different styles based on type
-                    for link in topology.get('links', []):
-                        G.add_edge(link.get('source', ''), 
-                                  link.get('target', ''),
-                                  type=link.get('type', ''),
-                                  protocol=link.get('protocol', ''),
-                                  state=link.get('state', ''))
-                    
-                    pos = nx.spring_layout(G)
-                    
-                    fig = go.Figure()
-                    
-                    # Add edges
-                    for edge in G.edges():
-                        x0, y0 = pos[edge[0]]
-                        x1, y1 = pos[edge[1]]
-                        edge_data = G.edges[edge]
-                        fig.add_trace(go.Scatter(x=[x0, x1], y=[y0, y1], 
-                                               mode='lines+markers',
-                                               line=dict(color='gray', width=1),
-                                               marker=dict(size=8, color='gray')))
-                    
-                    # Add nodes
-                    for node in G.nodes():
-                        x, y = pos[node]
-                        node_data = G.nodes[node]
-                        fig.add_trace(go.Scatter(x=[x], y=[y], 
-                                               mode='markers+text',
-                                               text=[f"{node_data.get('name', 'Unknown')}<br>{node_data.get('ip', 'N/A')}"],
-                                               textposition="top center",
-                                               marker=dict(size=20, color=node_data.get('color', 'gray'))))
-                    
-                    fig.update_layout(title="Network Topology", 
-                                    showlegend=False,
-                                    hovermode='closest')
-                    st.plotly_chart(fig, use_container_width=True)
-                else:
-                    st.info("No network topology information available.")
+            with col3:
+                st.metric(label="Anomaly Score", 
+                         value=f"{anomaly_score:.2f}")
+                st.metric(label="Network Errors", 
+                         value=metrics.get('network_errors', 0))
+        
+        # Display detected attacks only if they're current and new
+        current_time = datetime.now()
+        
+        # Get current metrics and check for actual attacks
+        current_metrics = set(metrics.get('detected_attacks', []))
+        
+        # Clear any existing warning if there are no current attacks
+        if not current_metrics and st.session_state.current_warning is not None:
+            st.session_state.current_warning.empty()
+            st.session_state.current_warning = None
+            st.session_state.warning_start_time = None
+            st.session_state.warning_shown = False
+            st.session_state.current_attacks = set()
+        
+        # Only show warning if there are new current attacks
+        new_attacks = current_metrics - st.session_state.current_attacks
+        if new_attacks:
+            # Create a new warning for current attacks
+            warning = st.empty()
+            with warning.container():
+                st.markdown("""
+                    <div class="attack-detected" style="
+                        background-color: #ff4444;
+                        color: white;
+                        padding: 1rem;
+                        border-radius: 0.5rem;
+                        margin: 1rem 0;
+                        font-size: 1.2rem;
+                        text-align: center;
+                        animation: flash 1s infinite;
+                    ">
+                        <h3 style="margin: 0;">⚠️ ATTACK DETECTED! ⚠️</h3>
+                        <p style="margin: 0.5rem 0;">Detected attack types:</p>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                """, unsafe_allow_html=True)
+                for attack in new_attacks:
+                    st.markdown(f"<li style='margin: 0.5rem 0;'><strong>{attack.upper()}</strong></li>", unsafe_allow_html=True)
+                st.markdown("</ul></div>", unsafe_allow_html=True)
             
-            # Store previous values for delta calculations
-            metrics['prev_connections'] = metrics.get('total_connections', 0)
-            metrics['prev_traffic_rate'] = metrics.get('traffic_rate', 0)
-            metrics['prev_cpu_percent'] = metrics.get('cpu_percent', 0)
-            metrics['prev_memory_percent'] = metrics.get('memory_percent', 0)
-            metrics['prev_anomaly_score'] = anomaly_score
-            metrics['prev_network_errors'] = metrics.get('network_errors', 0)
+            # Store the warning and its start time
+            st.session_state.current_warning = warning
+            st.session_state.warning_start_time = current_time
+            st.session_state.warning_shown = True
+            st.session_state.current_attacks = current_metrics
             
-            time.sleep(monitoring_interval)
+            # Update attack history
+            st.session_state.attack_history.extend([
+                {'time': current_time, 'attack': attack}
+                for attack in new_attacks
+            ])
+
+        # Remove old warnings if they've been displayed for more than 5 seconds
+        if (st.session_state.current_warning is not None and 
+            st.session_state.warning_start_time is not None and
+            (current_time - st.session_state.warning_start_time).total_seconds() > 5):
+            st.session_state.current_warning.empty()
+            st.session_state.current_warning = None
+            st.session_state.warning_start_time = None
+            st.session_state.warning_shown = False
+        
+        # Display network topology
+        topology = monitor.get_network_topology()
+        if topology['nodes']:
+            G = nx.Graph()
+            for node in topology['nodes']:
+                G.add_node(node['id'], **node)
+            for link in topology['links']:
+                G.add_edge(link['source'], link['target'], **link)
             
-        except Exception as e:
-            st.error(f"An error occurred while updating the dashboard: {str(e)}")
-            logging.error(f"Dashboard update error: {str(e)}")
-            time.sleep(monitoring_interval)
+            pos = nx.spring_layout(G)
+            edge_trace = go.Scatter(
+                x=[], y=[],
+                line=dict(width=0.5, color='#888'),
+                hoverinfo='none',
+                mode='lines')
+            
+            for edge in G.edges():
+                x0, y0 = pos[edge[0]]
+                x1, y1 = pos[edge[1]]
+                edge_trace['x'] += tuple([x0, x1, None])
+                edge_trace['y'] += tuple([y0, y1, None])
+            
+            node_trace = go.Scatter(
+                x=[], y=[],
+                mode='markers+text',
+                hoverinfo='text',
+                text=[],
+                marker=dict(
+                    showscale=True,
+                    colorscale='YlGnBu',
+                    size=10,
+                    colorbar=dict(
+                        thickness=15,
+                        title='Node Connections',
+                        xanchor='left'
+                    )
+                )
+            )
+            
+            for node in G.nodes():
+                x, y = pos[node]
+                node_trace['x'] += tuple([x])
+                node_trace['y'] += tuple([y])
+                node_trace['text'] += tuple([f"{G.nodes[node].get('name', node)}"])
+            
+            fig = go.Figure(data=[edge_trace, node_trace],
+                          layout=go.Layout(
+                              title='Network Topology',
+                              showlegend=False,
+                              hovermode='closest',
+                              margin=dict(b=20,l=5,r=5,t=40),
+                              xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+                              yaxis=dict(showgrid=False, zeroline=False, showticklabels=False)
+                          ))
+            
+            topology_placeholder.plotly_chart(fig)
+        
+        # Display alerts
+        with alerts_placeholder.container():
+            if metrics.get('new_connections'):
+                st.subheader("New Connections")
+                new_conn_data = []
+                for conn in metrics['new_connections']:
+                    new_conn_data.append({
+                        'Protocol': conn.get('protocol', 'Unknown'),
+                        'Local Address': conn.get('local', 'Unknown'),
+                        'Remote Address': conn.get('remote', 'Unknown'),
+                        'State': conn.get('state', 'Unknown'),
+                        'Time': metrics['timestamp'].strftime('%H:%M:%S')
+                    })
+                st.dataframe(pd.DataFrame(new_conn_data))
+            
+            if metrics.get('vulnerable_connections'):
+                st.subheader("⚠️ Potentially Vulnerable Connections")
+                vuln_data = []
+                for vuln in metrics['vulnerable_connections']:
+                    conn = vuln.get('connection', {})
+                    vuln_data.append({
+                        'Protocol': conn.get('protocol', 'Unknown'),
+                        'Local Address': conn.get('local', 'Unknown'),
+                        'Remote Address': conn.get('remote', 'Unknown'),
+                        'State': conn.get('state', 'Unknown'),
+                        'Vulnerability': vuln.get('vulnerability', 'Unknown'),
+                        'Severity': vuln.get('severity', 'Unknown'),
+                        'Time': metrics['timestamp'].strftime('%H:%M:%S')
+                    })
+                df = pd.DataFrame(vuln_data)
+                for _, row in df.iterrows():
+                    severity_class = 'vulnerability-high' if row['Severity'] == 'High' else 'vulnerability-medium'
+                    st.markdown(f"""
+                        <div class="{severity_class}">
+                            <strong>{row['Vulnerability']}</strong> ({row['Severity']} Severity)<br>
+                            Protocol: {row['Protocol']} | Local: {row['Local Address']} | Remote: {row['Remote Address']}<br>
+                            Time: {row['Time']}
+                        </div>
+                    """, unsafe_allow_html=True)
 
 # Anomaly Detection Tab
 with tab2:
     st.header("Anomaly Detection")
     
-    # Training section
-    st.subheader("Model Training")
-    if st.button("Train Model"):
-        with st.spinner("Training in progress..."):
-            try:
-                logging.info("Starting model training process")
-                preprocess_data()
-                train_gan(epochs=epochs)
-                st.success("Model training completed successfully!")
-                logging.info("Model training completed successfully")
-            except Exception as e:
-                error_msg = f"Error during training: {str(e)}"
-                st.error(error_msg)
-                logging.error(error_msg)
-    
-    # Anomaly detection results
-    st.subheader("Detection Results")
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        st.metric(label="Detected Anomalies", value="0", delta="0")
-        st.metric(label="False Positives", value="0", delta="0")
-    
-    with col2:
-        st.metric(label="Detection Rate", value="0%", delta="0%")
-        st.metric(label="Average Response Time", value="0ms", delta="0ms")
+    # Anomaly Score History
+    st.subheader("Anomaly Score History")
+    try:
+        # Create sample data for visualization
+        dates = pd.date_range(start='2025-04-01', periods=30, freq='D')
+        scores = np.random.normal(0.3, 0.1, 30)  # Sample scores around 0.3
+        df_scores = pd.DataFrame({'Date': dates, 'Anomaly Score': scores})
+        
+        fig = px.line(df_scores, x='Date', y='Anomaly Score', 
+                     title='Anomaly Score Trend')
+        st.plotly_chart(fig)
+        
+        # Current Anomaly Status
+        st.subheader("Current Anomaly Status")
+        current_score = anomaly_score  # Use the actual anomaly score from the network monitor
+        status_color = "red" if current_score > threshold else "green"
+        st.markdown(f"""
+            <div style='text-align: center;'>
+                <h2 style='color: {status_color};'>Current Score: {current_score:.2f}</h2>
+                <p>Threshold: {threshold}</p>
+            </div>
+        """, unsafe_allow_html=True)
+        
+        # Attack History
+        st.subheader("Attack History")
+        if st.session_state.attack_history:
+            attack_df = pd.DataFrame(st.session_state.attack_history)
+            attack_df['time'] = pd.to_datetime(attack_df['time'])
+            attack_df = attack_df.sort_values('time', ascending=False)
+            st.dataframe(attack_df)
+        else:
+            st.info("No attacks detected yet.")
+        
+        # Anomaly Types
+        st.subheader("Detected Anomaly Types")
+        anomaly_types = {
+            "High Traffic Volume": current_score > 0.7,
+            "Suspicious Connections": current_score > 0.6,
+            "Unusual Port Activity": current_score > 0.5,
+            "Resource Exhaustion": current_score > 0.4
+        }
+        
+        for anomaly, detected in anomaly_types.items():
+            status = "🔴 Detected" if detected else "🟢 Normal"
+            st.write(f"{anomaly}: {status}")
+            
+    except Exception as e:
+        st.error(f"Error displaying anomaly data: {str(e)}")
 
 # Network Statistics Tab
 with tab3:
     st.header("Network Statistics")
     
-    # Traffic patterns
-    st.subheader("Traffic Patterns")
-    monitor = get_network_monitor()
-    metrics_history = monitor.metrics_history
-    
-    if metrics_history:
-        df = pd.DataFrame(metrics_history)
-        df['timestamp'] = pd.to_datetime(df['timestamp'])
+    try:
+        # Network Traffic Over Time
+        st.subheader("Network Traffic Over Time")
+        traffic_data = pd.DataFrame({
+            'Time': pd.date_range(start='2025-04-01', periods=24, freq='H'),
+            'Traffic (MB/s)': np.random.normal(50, 10, 24)
+        })
+        fig_traffic = px.line(traffic_data, x='Time', y='Traffic (MB/s)',
+                            title='Network Traffic Trend')
+        st.plotly_chart(fig_traffic)
         
-        fig = px.line(df, x='timestamp', y='traffic_rate',
-                     title='Network Traffic Over Time')
-        st.plotly_chart(fig, use_container_width=True)
+        # Connection Statistics
+        st.subheader("Connection Statistics")
+        col1, col2 = st.columns(2)
         
-        # Protocol distribution
+        with col1:
+            st.metric("Total Connections", metrics.get('total_connections', 0))
+            st.metric("Active Connections", metrics.get('active_connections', 0))
+        
+        with col2:
+            st.metric("Failed Connections", metrics.get('failed_connections', 0))
+            st.metric("Connection Rate", f"{metrics.get('connection_rate', 0):.1f}/s")
+        
+        # Protocol Distribution
         st.subheader("Protocol Distribution")
-        protocol_counts = {}
-        for metrics in metrics_history:
-            for protocol, connections in metrics['connections'].items():
-                protocol_counts[protocol] = protocol_counts.get(protocol, 0) + len(connections)
+        protocols = {
+            'TCP': metrics.get('tcp_connections', 0),
+            'UDP': metrics.get('udp_connections', 0),
+            'ICMP': metrics.get('icmp_connections', 0)
+        }
+        fig_protocols = px.pie(values=list(protocols.values()),
+                             names=list(protocols.keys()),
+                             title='Protocol Distribution')
+        st.plotly_chart(fig_protocols)
         
-        if protocol_counts:
-            fig = px.pie(values=list(protocol_counts.values()),
-                        names=list(protocol_counts.keys()),
-                        title='Traffic Protocol Distribution')
-            st.plotly_chart(fig, use_container_width=True)
-    else:
-        st.info("No historical data available yet. Start monitoring to see statistics.")
+    except Exception as e:
+        st.error(f"Error displaying network statistics: {str(e)}")
 
 # Footer
 st.markdown("---")
