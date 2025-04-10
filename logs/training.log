@@ -453,3 +453,4 @@
 2025-04-09 22:48:05,129 - INFO - Detected attacks: ['port_scan']
 2025-04-09 22:48:32,668 - INFO - Detected attacks: ['port_scan']
 2025-04-09 22:49:16,609 - INFO - Detected attacks: ['port_scan']
+2025-04-09 23:57:16,237 - INFO - Detected attacks: ['port_scan']
