@@ -33,6 +33,7 @@ A comprehensive Software-Defined Network (SDN) monitoring and anomaly detection 
 ### Prerequisites
 - Python 3.8 or higher
 - pip (Python package manager)
+- Kaggle API credentials (for downloading the dataset)
 
 ### Setup
 1. Clone the repository:
@@ -52,26 +53,94 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
+4. Set up Kaggle API:
+   - Create a Kaggle account if you don't have one
+   - Go to your Kaggle account settings
+   - Create a new API token
+   - Place the kaggle.json file in ~/.kaggle/ directory
+
 ## Project Structure
 
 ```
 InSDN-dataset/
-├── app.py                 # Main Streamlit application
-├── requirements.txt       # Project dependencies
-├── scripts/
-│   ├── data_preprocess.py # Data preprocessing utilities
-│   ├── train_gan.py      # GAN training implementation
-│   └── network_monitor.py # Network monitoring and attack detection
-├── models/
-│   └── gan_model.pth     # Trained GAN model
-├── data/
-│   └── processed/        # Processed network data
-└── logs/
-    ├── app.log          # Application logs
-    └── attack_simulator.log # Attack simulation logs
+├── app/                      # Web application components
+├── api_integration/          # API integration modules
+├── networkEnv/               # Network environment configuration
+├── scripts/                  # Core processing scripts
+│   ├── data_preprocess.py    # Data preprocessing utilities
+│   ├── data_loader.py        # Data loading utilities
+│   ├── train_gan.py          # GAN training implementation
+│   ├── network_monitor.py    # Network monitoring and attack detection
+│   ├── attack_simulator.py   # Attack simulation utilities
+│   ├── anomaly_detector.py   # Anomaly detection implementation
+│   ├── gan_model.py          # GAN model architecture
+│   ├── validate_gan.py       # GAN validation utilities
+│   ├── calculate_accuracy.py # Accuracy calculation utilities
+│   ├── visualize_*.py        # Various visualization scripts
+│   └── analyze_*.py          # Various analysis scripts
+├── reports/                  # Generated reports and visualizations
+├── logs/                     # Application and simulation logs
+├── app.py                    # Main Streamlit application
+├── mobile_app.py             # Mobile application implementation
+├── main.py                   # Main entry point
+├── requirements.txt          # Project dependencies
+├── req.txt                   # Additional requirements
+├── buildozer.spec            # Mobile app build configuration
+└── pubspec.yaml              # Mobile app dependencies
 ```
 
 ## Usage
+
+### Data Processing Pipeline
+
+1. Download the dataset from Kaggle:
+```bash
+python scripts/data_loader.py --download
+```
+This will download the raw dataset files to `data/raw/`:
+- `metasploitable.csv`
+- `OVS.csv`
+- `Normal_data.csv`
+
+2. Preprocess the data:
+```bash
+python scripts/data_preprocess.py
+```
+This will generate processed data files in `data/processed/`:
+- `train_data.csv`
+- `test_data.csv`
+- `validation_data.csv`
+- `synthetic_data.csv`
+
+3. Train the GAN model:
+```bash
+python scripts/train_gan.py
+```
+
+4. Validate the GAN model:
+```bash
+python scripts/validate_gan.py
+```
+
+5. Run anomaly detection:
+```bash
+python scripts/anomaly_detector.py
+```
+
+6. Generate visualizations:
+```bash
+python scripts/visualize_training.py
+python scripts/visualize_accuracy.py
+python scripts/visualize_accuracy_map.py
+```
+
+7. Analyze results:
+```bash
+python scripts/analyze_recent_results.py
+python scripts/analyze_accuracy_ranges.py
+```
+
+### Running the Web Application
 
 1. Start the application:
 ```bash
@@ -81,27 +150,14 @@ streamlit run app.py
 2. Access the dashboard:
 - Open your web browser and navigate to `http://localhost:8501`
 
-### Dashboard Features
+### Running the Mobile Application
 
-#### Live Monitoring Tab
-- Real-time network metrics
-- Active connections display
-- Network topology visualization
-- Attack warnings (when detected)
-- Resource usage monitoring
+1. Build the mobile app:
+```bash
+buildozer android debug
+```
 
-#### Anomaly Detection Tab
-- Anomaly score history
-- Current anomaly status
-- Attack history
-- Detected anomaly types
-- Customizable thresholds
-
-#### Network Statistics Tab
-- Network traffic trends
-- Connection statistics
-- Protocol distribution
-- Historical data analysis
+2. Install and run the APK on your Android device
 
 ## Configuration
 
@@ -139,40 +195,6 @@ The system detects various types of network attacks:
    - Password guessing patterns
    - Authentication failure monitoring
 
-## Visualization Features
-
-1. Network Topology
-   - Interactive node-link diagram
-   - Real-time connection updates
-   - Node status indicators
-   - Connection strength visualization
-
-2. Metrics Display
-   - Real-time charts
-   - Historical trends
-   - Statistical analysis
-   - Customizable views
-
-3. Attack Warnings
-   - Flashing alert system
-   - Attack type identification
-   - Severity indicators
-   - Historical tracking
-
-## Logging and Monitoring
-
-1. Application Logs
-   - System events
-   - Error tracking
-   - Performance metrics
-   - User actions
-
-2. Attack Logs
-   - Detected attacks
-   - Attack patterns
-   - Timestamps
-   - Severity levels
-
 ## Dependencies
 
 - streamlit==1.32.0
@@ -191,6 +213,7 @@ The system detects various types of network attacks:
 - requests==2.31.0
 - pyyaml==6.0.1
 - scipy==1.12.0
+- kaggle==1.5.16
 
 ## Contributing
 
